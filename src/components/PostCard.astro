@@ -1,0 +1,56 @@
+---
+// No images needed for simplified card
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  author: string;
+  authorAvatar?: string;
+  slug: string;
+  image?: string;
+  number?: number;
+}
+
+const { title, description, date, author, authorAvatar, slug, number } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}).format(date);
+---
+
+<article class="group relative">
+  <a href={`/blog/${slug}`} class="block">
+    <div class="flex gap-4 items-start">
+      <!-- Small square icon with inset number badge -->
+      <div class="relative w-10 h-10 md:w-14 md:h-14 rounded-lg bg-gray-300 overflow-hidden group-hover:bg-primary/20 transition-colors flex items-center justify-center shrink-0 mt-0 md:mt-[22px]">
+        <img src="/profileIMG.png" onerror="this.src='/profileIMG@profileIMG.png';this.onerror=null;" alt="Profile" class="absolute inset-0 w-full h-full object-cover rounded-lg" loading="lazy" />
+        {number && (
+          <div class="absolute -top-2 -right-2 w-6 h-6 rounded-md bg-black group-hover:bg-primary text-white text-xs font-bold flex items-center justify-center shadow-[0_0_0_2px_#F5F5F5] transition-colors">
+            {number}
+          </div>
+        )}
+      </div>
+
+      <!-- Content -->
+      <div class="flex-1">
+        <!-- Author & Date line -->
+        <div class="flex items-center gap-2 text-[12px] leading-[16px] md:text-[16px] md:leading-[22px] text-neutral-500 font-pixel font-normal uppercase">
+          <span>{author}</span>
+          <span>—</span>
+          <time datetime={date.toISOString()}>{formattedDate}</time>
+        </div>
+
+        <!-- Title -->
+        <h2 class="mt-1 text-[20px] leading-[24px] md:text-[48px] md:leading-[53px] font-black text-black transition-colors group-hover:text-primary">
+          {title}
+        </h2>
+      </div>
+
+      <!-- No separate number badge; it is inset in the icon -->
+    </div>
+  </a>
+</article>
+

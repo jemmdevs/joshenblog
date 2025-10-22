@@ -1,11 +1,46 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Get all blog posts, sorted by date (newest first)
+const allPosts = await getCollection('blog', ({ data }: CollectionEntry<'blog'>) => {
+  return data.draft !== true;
+});
+
+const sortedPosts = allPosts.sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => 
+  b.data.date.getTime() - a.data.date.getTime()
+);
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout 
+  title="Josen Dev | Performance & HCI Blog"
+  description="A blog focused on web performance optimization, human-computer interaction, and modern development practices."
+>
+  <!-- No hero title; minimalist list only -->
+
+  <!-- Posts Grid -->
+  <section class="container mx-auto px-4 lg:px-8 py-16">
+    <div class="grid grid-cols-1 gap-12 max-w-3xl mx-auto">
+      {sortedPosts.map((post: CollectionEntry<'blog'>, index: number) => (
+        <PostCard 
+          title={post.data.title}
+          description={post.data.description}
+          date={post.data.date}
+          author={post.data.author}
+          authorAvatar={post.data.authorAvatar}
+          slug={post.slug}
+          image={post.data.image}
+          number={index + 1}
+        />
+      ))}
+    </div>
+
+    {sortedPosts.length === 0 && (
+      <div class="text-center py-20">
+        <p class="text-gray-600 text-xl">No posts yet. Check back soon!</p>
+      </div>
+    )}
+  </section>
+</BaseLayout>

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://josendev.com/sitemap-index.xml
+

@@ -1,0 +1,89 @@
+---
+import BaseLayout from './BaseLayout.astro';
+// Optional banner image handled inline
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  author: string;
+  authorAvatar?: string;
+  image?: string;
+  tags?: string[];
+}
+
+const { title, description, date, author, authorAvatar, image, tags = [] } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat('en-US', {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}).format(date);
+
+// No reading time display in simplified detail view
+---
+
+<BaseLayout title={`${title} | Josen Dev`} description={description}>
+  <article>
+    <!-- Banner (with optional background image) -->
+    <section class="px-4 lg:px-8 py-10">
+      <div class="container mx-auto">
+        <div class="relative max-w-6xl mx-auto rounded-2xl shadow-xl overflow-hidden bg-primary text-white">
+          <img src="/bannerIMG.png" alt={title} class="absolute right-6 bottom-0 h-[85%] object-contain pointer-events-none select-none" loading="eager" />
+          <div class="relative px-6 lg:px-10 pt-14 lg:pt-20 pb-24">
+            <div class="max-w-4xl pr-40">
+              <h1 class="text-[20px] leading-[24px] md:text-[64px] md:leading-[70px] font-black tracking-tight">
+                {title}
+              </h1>
+              <div class="mt-4">
+                <div class="w-148 h-px bg-white/70"></div>
+              </div>
+              <div class="font-pixel font-normal uppercase text-[12px] md:text-[12px] leading-4 text-white flex items-center gap-3 absolute left-6 lg:left-10 bottom-6">
+                <time datetime={date.toISOString()}>{formattedDate}</time>
+                <span>—</span>
+                <span>{author}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="container mx-auto px-4 lg:px-8 py-12">
+      <div class="max-w-3xl mx-auto">
+        <div class="post-content">
+          <slot />
+        </div>
+
+        <div class="mt-12 flex justify-between items-center">
+          <a href="/" class="text-primary hover:underline font-medium">← Back</a>
+          <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="text-gray-600 hover:text-primary font-medium">Top ↑</button>
+        </div>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<style is:global>
+  .post-content p {
+    font-family: SB, MBP, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 32px;
+    color: #000;
+    margin-bottom: 1rem;
+  }
+  .post-content h2,
+  .post-content h3 {
+    font-family: SB, MBP, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    color: #000;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .post-content a { color: #C62F41; text-decoration: none; }
+  .post-content a:hover { text-decoration: underline; }
+</style>
+
