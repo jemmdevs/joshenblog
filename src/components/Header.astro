@@ -2,16 +2,285 @@
 // Header component inspired by Azuki's design
 ---
 
-<header class="sticky top-0 z-50 bg-background">
-  <div class="container mx-auto px-4 lg:px-8">
+<header class="sticky top-0 z-[60] bg-background">
+  <div class="container mx-auto px-4 lg:px-8 relative z-[60]">
     <div class="flex items-center justify-between h-16">
       <!-- Logo -->
       <a href="/" class="flex items-center space-x-2 group">
-        <div class="bg-primary px-3 py-1.5 rounded">
-          <span class="text-white font-brand font-black text-base leading-6 tracking-wider">JOSEN</span>
-        </div>
+        <span class="text-primary font-brand font-black text-lg md:text-xl leading-6 tracking-wider">JOSHEN</span>
       </a>
+
+      <!-- Center: Projects (desktop only) -->
+      <a href="https://josencv.vercel.app" target="_blank" rel="noopener noreferrer" class="hidden md:block text-primary font-black text-lg hover:opacity-80 transition-opacity">
+        PROJECTS
+      </a>
+
+      <!-- Right: Contact (desktop only) -->
+      <div class="relative hidden md:block">
+        <button 
+          id="contact-btn" 
+          class="text-gray-900 font-medium text-lg hover:text-primary transition-colors cursor-pointer"
+        >
+          CONTACT
+        </button>
+        
+        <!-- Tooltip with copy email (hidden by default) -->
+        <div 
+          id="contact-tooltip" 
+          class="absolute top-full right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg p-4 opacity-0 pointer-events-none transition-opacity w-72 z-50"
+        >
+          <div class="space-y-3">
+            <div class="text-sm text-gray-700 font-medium">jemmdev@gmail.com</div>
+            <div class="flex gap-2">
+              <button 
+                id="copy-email-header" 
+                class="flex-1 px-4 py-2 rounded-md bg-gray-800 text-white text-sm font-medium flex items-center justify-center gap-2 hover:bg-gray-900 transition-colors" 
+                aria-label="Copy email"
+              >
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copy
+              </button>
+              <a 
+                href="mailto:jemmdev@gmail.com" 
+                class="flex-1 px-4 py-2 rounded-md bg-primary text-white text-sm font-medium flex items-center justify-center gap-2 hover:bg-[#b12e38] transition-colors"
+              >
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                Email
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile: Hamburger Menu Button -->
+      <button 
+        id="mobile-menu-btn" 
+        class="md:hidden flex flex-col justify-center items-center w-8 h-8 relative z-[70]"
+        aria-label="Toggle menu"
+      >
+        <span id="hamburger-line-1" class="w-6 h-0.5 bg-gray-900 transition-all duration-300 absolute"></span>
+        <span id="hamburger-line-2" class="w-6 h-0.5 bg-gray-900 transition-all duration-300 absolute mt-3"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div 
+    id="mobile-menu" 
+    class="md:hidden fixed inset-0 bg-background z-50 opacity-0 pointer-events-none transition-opacity duration-300"
+  >
+    <div class="container mx-auto px-4 lg:px-8 pt-20">
+      <nav class="flex flex-col gap-8">
+        <!-- Projects Link -->
+        <a 
+          href="https://josencv.vercel.app" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="text-primary font-black text-3xl hover:opacity-80 transition-opacity"
+        >
+          PROJECTS
+        </a>
+
+        <!-- Contact Section -->
+        <div class="space-y-4">
+          <div class="text-gray-900 font-medium text-3xl">CONTACT</div>
+          <div class="text-gray-700 text-sm mb-3">jemmdev@gmail.com</div>
+          <div class="flex gap-2">
+            <button 
+              id="copy-email-mobile" 
+              class="flex-1 px-4 py-3 rounded-md bg-gray-800 text-white text-sm font-medium flex items-center justify-center gap-2 hover:bg-gray-900 transition-colors" 
+              aria-label="Copy email"
+            >
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copy
+            </button>
+            <a 
+              href="mailto:jemmdev@gmail.com" 
+              class="flex-1 px-4 py-3 rounded-md bg-primary text-white text-sm font-medium flex items-center justify-center gap-2 hover:bg-[#b12e38] transition-colors"
+            >
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              Email
+            </a>
+          </div>
+        </div>
+      </nav>
     </div>
   </div>
 </header>
+
+<script>
+  // Mobile Menu
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const hamburgerLine1 = document.getElementById('hamburger-line-1');
+  const hamburgerLine2 = document.getElementById('hamburger-line-2');
+  let isMobileMenuOpen = false;
+
+  mobileMenuBtn?.addEventListener('click', () => {
+    isMobileMenuOpen = !isMobileMenuOpen;
+    
+    if (isMobileMenuOpen) {
+      // Open menu
+      mobileMenu?.classList.remove('opacity-0', 'pointer-events-none');
+      mobileMenu?.classList.add('opacity-100', 'pointer-events-auto');
+      
+      // Transform to X (乂)
+      hamburgerLine1?.classList.add('rotate-45', 'translate-y-1');
+      hamburgerLine2?.classList.add('-rotate-45', '-translate-y-1');
+    } else {
+      // Close menu
+      mobileMenu?.classList.add('opacity-0', 'pointer-events-none');
+      mobileMenu?.classList.remove('opacity-100', 'pointer-events-auto');
+      
+      // Transform back to hamburger
+      hamburgerLine1?.classList.remove('rotate-45', 'translate-y-1');
+      hamburgerLine2?.classList.remove('-rotate-45', '-translate-y-1');
+    }
+  });
+
+  // Copy email from mobile menu
+  const copyEmailMobile = document.getElementById('copy-email-mobile');
+  
+  copyEmailMobile?.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText('jemmdev@gmail.com');
+      
+      // Show toast
+      const toast = document.getElementById('copy-toast');
+      if (toast) {
+        toast.classList.remove('opacity-0', 'pointer-events-none');
+        toast.classList.add('opacity-100');
+        
+        setTimeout(() => {
+          toast.classList.remove('opacity-100');
+          toast.classList.add('opacity-0', 'pointer-events-none');
+        }, 2000);
+      }
+      
+      // Visual feedback
+      copyEmailMobile.classList.add('ring-2', 'ring-offset-1', 'ring-gray-800');
+      setTimeout(() => copyEmailMobile.classList.remove('ring-2', 'ring-offset-1', 'ring-gray-800'), 800);
+    } catch (e) {
+      console.warn('Clipboard not available');
+    }
+  });
+
+  // Desktop Contact Tooltip
+  const contactBtn = document.getElementById('contact-btn');
+  const contactTooltip = document.getElementById('contact-tooltip');
+  
+  let isTooltipVisible = false;
+  let hideTimeout: NodeJS.Timeout | null = null;
+  
+  // Show tooltip on hover (desktop) or click (mobile)
+  const showTooltip = () => {
+    if (hideTimeout) {
+      clearTimeout(hideTimeout);
+      hideTimeout = null;
+    }
+    contactTooltip?.classList.remove('opacity-0', 'pointer-events-none');
+    contactTooltip?.classList.add('opacity-100', 'pointer-events-auto');
+    isTooltipVisible = true;
+  };
+  
+  // Hide tooltip with delay
+  const hideTooltip = () => {
+    hideTimeout = setTimeout(() => {
+      contactTooltip?.classList.add('opacity-0', 'pointer-events-none');
+      contactTooltip?.classList.remove('opacity-100', 'pointer-events-auto');
+      isTooltipVisible = false;
+    }, 200);
+  };
+  
+  // Desktop: hover events
+  contactBtn?.addEventListener('mouseenter', () => {
+    if (window.innerWidth >= 768) {
+      showTooltip();
+    }
+  });
+  
+  contactBtn?.addEventListener('mouseleave', () => {
+    if (window.innerWidth >= 768) {
+      hideTooltip();
+    }
+  });
+  
+  // Keep tooltip visible when hovering over it
+  contactTooltip?.addEventListener('mouseenter', () => {
+    if (window.innerWidth >= 768 && hideTimeout) {
+      clearTimeout(hideTimeout);
+      hideTimeout = null;
+    }
+  });
+  
+  contactTooltip?.addEventListener('mouseleave', () => {
+    if (window.innerWidth >= 768) {
+      hideTooltip();
+    }
+  });
+  
+  // Mobile: click to toggle
+  contactBtn?.addEventListener('click', (e) => {
+    if (window.innerWidth < 768) {
+      e.stopPropagation();
+      if (isTooltipVisible) {
+        contactTooltip?.classList.add('opacity-0', 'pointer-events-none');
+        contactTooltip?.classList.remove('opacity-100', 'pointer-events-auto');
+        isTooltipVisible = false;
+      } else {
+        showTooltip();
+      }
+    }
+  });
+  
+  // Close tooltip when clicking outside (mobile)
+  document.addEventListener('click', (e) => {
+    if (window.innerWidth < 768 && isTooltipVisible) {
+      if (!(e.target as Element).closest('#contact-btn') && !(e.target as Element).closest('#contact-tooltip')) {
+        contactTooltip?.classList.add('opacity-0', 'pointer-events-none');
+        contactTooltip?.classList.remove('opacity-100', 'pointer-events-auto');
+        isTooltipVisible = false;
+      }
+    }
+  });
+  
+  // Copy email functionality
+  const copyEmailBtn = document.getElementById('copy-email-header');
+  
+  copyEmailBtn?.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText('jemmdev@gmail.com');
+      
+      // Show toast
+      const toast = document.getElementById('copy-toast');
+      if (toast) {
+        toast.classList.remove('opacity-0', 'pointer-events-none');
+        toast.classList.add('opacity-100');
+        
+        setTimeout(() => {
+          toast.classList.remove('opacity-100');
+          toast.classList.add('opacity-0', 'pointer-events-none');
+        }, 2000);
+      }
+      
+      // Visual feedback on button
+      copyEmailBtn.classList.add('ring-2', 'ring-offset-1', 'ring-primary');
+      setTimeout(() => copyEmailBtn.classList.remove('ring-2', 'ring-offset-1', 'ring-primary'), 800);
+    } catch (e) {
+      console.warn('Clipboard not available');
+    }
+  });
+</script>
 
