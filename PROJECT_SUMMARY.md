@@ -1,4 +1,4 @@
-# Project Summary: Josen Dev Blog
+# Project Summary: josen Dev Blog
 
 ## 🎉 Project Completed Successfully!
 

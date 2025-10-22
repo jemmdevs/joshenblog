@@ -1,4 +1,4 @@
-# Josen Dev Blog
+# josen Dev Blog
 
 A minimalist, high-performance blog built with Astro, Tailwind CSS, and Pagefind. Focused on web performance optimization and human-computer interaction.
 
@@ -292,4 +292,4 @@ For questions or suggestions, reach out through the contact page or open an issu
 
 ---
 
-Built with ❤️ by Josen Dev
+Built with ❤️ by josen Dev

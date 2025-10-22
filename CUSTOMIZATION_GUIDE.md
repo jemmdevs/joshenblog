@@ -14,7 +14,7 @@ This guide will help you customize the blog to match your brand and preferences.
 </div>
 ```
 
-Replace `JOSEN DEV` with your brand name.
+Replace `josen DEV` with your brand name.
 
 ### Colors
 
