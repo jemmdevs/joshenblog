@@ -74,7 +74,7 @@ senriblog/
 │   ├── pages/            # Routes
 │   │   ├── index.astro   # Homepage (blog list)
 │   │   ├── about.astro
-│   │   ├── projects.astro
+│   │   ├── works.astro
 │   │   ├── contact.astro
 │   │   └── blog/
 │   │       └── [...slug].astro  # Dynamic blog post pages

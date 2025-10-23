@@ -10,9 +10,9 @@
         <span class="text-primary font-brand font-black text-lg md:text-xl leading-6 tracking-wider">SENRI</span>
       </a>
 
-      <!-- Center: Projects (desktop only) -->
+      <!-- Center: Works (desktop only) -->
       <a href="https://josencv.vercel.app" target="_blank" rel="noopener noreferrer" class="hidden md:block text-primary font-black text-lg hover:opacity-80 transition-opacity">
-        PROJECTS
+        WORKS
       </a>
 
       <!-- Right: Contact (desktop only) -->
@@ -76,43 +76,51 @@
     class="md:hidden fixed inset-0 bg-background z-50 opacity-0 pointer-events-none transition-opacity duration-300"
   >
     <div class="container mx-auto px-4 lg:px-8 pt-20">
-      <nav class="flex flex-col gap-8">
-        <!-- Projects Link -->
-        <a 
-          href="https://josencv.vercel.app" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="text-primary font-black text-3xl hover:opacity-80 transition-opacity"
-        >
-          PROJECTS
-        </a>
+      <nav class="flex flex-col">
+        <!-- Works Link -->
+        <div class="pb-8 border-b" style="border-color: #C62F41;">
+          <a 
+            href="https://josencv.vercel.app" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="text-primary font-black text-3xl hover:opacity-80 transition-opacity inline-flex items-start gap-1 relative"
+          >
+            WORKS
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C62F41" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="absolute -top-0.5 -right-4">
+              <path d="M7 17L17 7"></path>
+              <path d="M7 7h10v10"></path>
+            </svg>
+          </a>
+        </div>
 
         <!-- Contact Section -->
-        <div class="space-y-4">
-          <div class="text-gray-900 font-medium text-3xl">CONTACT</div>
-          <div class="text-gray-700 text-sm mb-3">jemmdev@gmail.com</div>
-          <div class="flex gap-2">
-            <button 
-              id="copy-email-mobile" 
-              class="flex-1 px-4 py-3 rounded-md bg-gray-800 text-white text-sm font-medium flex items-center justify-center gap-2 hover:bg-gray-900 transition-colors" 
-              aria-label="Copy email"
-            >
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-              </svg>
-              Copy
-            </button>
-            <a 
-              href="mailto:jemmdev@gmail.com" 
-              class="flex-1 px-4 py-3 rounded-md bg-primary text-white text-sm font-medium flex items-center justify-center gap-2 hover:bg-[#b12e38] transition-colors"
-            >
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-              Email
-            </a>
+        <div class="py-8" style="border-color: #C62F41;">
+          <div class="space-y-4">
+            <div class="text-gray-900 font-medium text-3xl">CONTACT</div>
+            <div class="text-gray-700 text-sm mb-3">jemmdev@gmail.com</div>
+            <div class="flex gap-2">
+              <button 
+                id="copy-email-mobile" 
+                class="flex-1 px-4 py-3 rounded-md bg-gray-800 text-white text-sm font-medium flex items-center justify-center gap-2 hover:bg-gray-900 transition-colors" 
+                aria-label="Copy email"
+              >
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copy
+              </button>
+              <a 
+                href="mailto:jemmdev@gmail.com" 
+                class="flex-1 px-4 py-3 rounded-md bg-primary text-white text-sm font-medium flex items-center justify-center gap-2 hover:bg-[#b12e38] transition-colors"
+              >
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                Email
+              </a>
+            </div>
           </div>
         </div>
       </nav>
@@ -182,7 +190,7 @@
   const contactTooltip = document.getElementById('contact-tooltip');
   
   let isTooltipVisible = false;
-  let hideTimeout: NodeJS.Timeout | null = null;
+  let hideTimeout = null;
   
   // Show tooltip on hover (desktop) or click (mobile)
   const showTooltip = () => {
@@ -247,8 +255,9 @@
   
   // Close tooltip when clicking outside (mobile)
   document.addEventListener('click', (e) => {
-    if (window.innerWidth < 768 && isTooltipVisible) {
-      if (!(e.target as Element).closest('#contact-btn') && !(e.target as Element).closest('#contact-tooltip')) {
+    if (window.innerWidth < 768 && isTooltipVisible && e.target) {
+      const target = e.target;
+      if (!target.closest('#contact-btn') && !target.closest('#contact-tooltip')) {
         contactTooltip?.classList.add('opacity-0', 'pointer-events-none');
         contactTooltip?.classList.remove('opacity-100', 'pointer-events-auto');
         isTooltipVisible = false;
@@ -283,4 +292,3 @@
     }
   });
 </script>
-

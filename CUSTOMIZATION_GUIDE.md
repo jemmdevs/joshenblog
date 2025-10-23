@@ -115,7 +115,7 @@ Add or remove navigation items:
 <nav class="hidden md:flex items-center space-x-8">
   <a href="/about">ABOUT</a>
   <a href="/">ARTICLES</a>
-  <a href="/projects">PROJECTS</a>
+  <a href="/works">works</a>
   <a href="/contact">CONTACT</a>
   <!-- Add more items here -->
 </nav>
@@ -180,7 +180,7 @@ The page will be available at `/new-page`
 
 Delete the corresponding file from `src/pages/`:
 - `about.astro` → Removes /about
-- `projects.astro` → Removes /projects
+- `works.astro` → Removes /works
 - `contact.astro` → Removes /contact
 
 ## 🏷️ Tags

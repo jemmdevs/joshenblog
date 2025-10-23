@@ -35,7 +35,7 @@ A high-performance, minimalist blog built with Astro, inspired by Azuki's design
 - ✅ **Homepage** (`/`): Blog post listing with hero section
 - ✅ **Blog Post** (`/blog/[slug]`): Dynamic blog post pages
 - ✅ **About** (`/about`): About page
-- ✅ **Projects** (`/projects`): Projects showcase
+- ✅ **Works** (`/works`): Works showcase
 - ✅ **Contact** (`/contact`): Contact page with form
 
 ### 6. Content
@@ -180,7 +180,7 @@ senriblog/
 │   ├── pages/                # Routes
 │   │   ├── index.astro
 │   │   ├── about.astro
-│   │   ├── projects.astro
+│   │   ├── works.astro
 │   │   ├── contact.astro
 │   │   └── blog/[...slug].astro
 │   └── styles/

@@ -55,7 +55,7 @@ Your content here...
 ### To Edit Pages
 - **Homepage**: `src/pages/index.astro`
 - **About**: `src/pages/about.astro`
-- **Projects**: `src/pages/projects.astro`
+- **Works**: `src/pages/works.astro`
 - **Contact**: `src/pages/contact.astro`
 
 ## 🎨 Style Customization
