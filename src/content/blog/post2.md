@@ -2,7 +2,7 @@
 title: "POST2"
 description: "An expert, practical view on Human-Computer Interaction: what to prioritize, how to avoid cognitive traps, and how to design for fast, correct decisions."
 date: 2025-10-23
-author: "JOSEN"
+author: "SENRI"
 image: ""
 tags: ["HCI", "UX", "cognición", "accesibilidad"]
 ---

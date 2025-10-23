@@ -1,4 +1,4 @@
-# josen Dev Blog
+# senri Dev Blog
 
 A minimalist, high-performance blog built with Astro, Tailwind CSS, and Pagefind. Focused on web performance optimization and human-computer interaction.
 
@@ -39,7 +39,7 @@ A minimalist, high-performance blog built with Astro, Tailwind CSS, and Pagefind
 ```bash
 # Clone the repository
 git clone <your-repo-url>
-cd josenblog
+cd senriblog
 
 # Install dependencies
 npm install
@@ -53,7 +53,7 @@ The site will be available at `http://localhost:4321`
 ## 📦 Project Structure
 
 ```
-josenblog/
+senriblog/
 ├── public/                 # Static assets
 │   └── favicon.svg
 ├── src/
@@ -292,4 +292,4 @@ For questions or suggestions, reach out through the contact page or open an issu
 
 ---
 
-Built with ❤️ by josen Dev
+Built with ❤️ by senri Dev

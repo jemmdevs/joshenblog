@@ -2,7 +2,7 @@
 title: "HCI: Principles, Biases, and Designing for Better Decisions"
 description: "An expert, practical view on Human-Computer Interaction: what to prioritize, how to avoid cognitive traps, and how to design for fast, correct decisions."
 date: 2025-10-22
-author: "JOSEN"
+author: "SENRI"
 image: ""
 tags: ["HCI", "UX", "cognición", "accesibilidad"]
 ---

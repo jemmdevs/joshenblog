@@ -1,4 +1,4 @@
-# Project Summary: josen Dev Blog
+# Project Summary: senri Dev Blog
 
 ## 🎉 Project Completed Successfully!
 
@@ -158,7 +158,7 @@ npm run preview
 ## 📁 Project Structure
 
 ```
-josenblog/
+senriblog/
 ├── public/                    # Static assets
 │   ├── avatars/              # Author avatars
 │   ├── images/               # Blog images
