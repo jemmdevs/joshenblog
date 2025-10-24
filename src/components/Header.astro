@@ -2,7 +2,7 @@
 // Header component inspired by Azuki's design
 ---
 
-<header class="sticky top-0 z-[60] md:backdrop-blur-md md:bg-white/70 bg-[#EBEBE6] border-b border-white/20 shadow-sm">
+<header class="sticky top-0 z-[60] md:backdrop-blur-md md:bg-white/70 bg-[#F5F5F5] border-b border-white/20 shadow-sm">
   <div class="container mx-auto px-4 lg:px-8 relative z-[60]">
     <div class="flex items-center justify-between h-16">
       <!-- Logo -->
@@ -216,6 +216,9 @@
       mobileMenu?.classList.remove('opacity-0', 'pointer-events-none');
       mobileMenu?.classList.add('opacity-100', 'pointer-events-auto');
       
+      // Block scroll
+      document.body.style.overflow = 'hidden';
+      
       // Transform to X (乂)
       hamburgerLine1?.classList.add('rotate-45', 'translate-y-1');
       hamburgerLine2?.classList.add('-rotate-45', '-translate-y-1');
@@ -223,6 +226,9 @@
       // Close menu
       mobileMenu?.classList.add('opacity-0', 'pointer-events-none');
       mobileMenu?.classList.remove('opacity-100', 'pointer-events-auto');
+      
+      // Enable scroll
+      document.body.style.overflow = '';
       
       // Transform back to hamburger
       hamburgerLine1?.classList.remove('rotate-45', 'translate-y-1');
