@@ -2,26 +2,40 @@
 // Header component inspired by Azuki's design
 ---
 
-<header class="sticky top-0 z-[60] bg-background">
+<header class="sticky top-0 z-[60] md:backdrop-blur-md md:bg-white/70 bg-[#EBEBE6] border-b border-white/20 shadow-sm">
   <div class="container mx-auto px-4 lg:px-8 relative z-[60]">
     <div class="flex items-center justify-between h-16">
       <!-- Logo -->
       <a href="/" class="flex items-center space-x-2 group">
-        <span class="text-primary font-brand font-black text-lg md:text-xl leading-6 tracking-wider">SENRI</span>
+        <span 
+          id="logo-link"
+          class="text-primary font-brand font-black text-lg md:text-xl leading-6 tracking-wider morph-text inline-block"
+          style="min-width: 70px;"
+        >
+          <span class="morph-char">S</span><span class="morph-char">E</span><span class="morph-char">N</span><span class="morph-char">R</span><span class="morph-char">I</span>
+        </span>
       </a>
 
       <!-- Center: Works (desktop only) -->
-      <a href="https://josencv.vercel.app" target="_blank" rel="noopener noreferrer" class="hidden md:block text-primary font-black text-lg hover:opacity-80 transition-opacity">
-        WORKS
+      <a 
+        href="https://josencv.vercel.app" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="hidden md:block text-primary font-black text-lg hover:opacity-80 transition-opacity morph-text inline-block"
+        id="works-link"
+        style="min-width: 85px;"
+      >
+        <span class="morph-char">W</span><span class="morph-char">O</span><span class="morph-char">R</span><span class="morph-char">K</span><span class="morph-char">S</span>
       </a>
 
       <!-- Right: Contact (desktop only) -->
       <div class="relative hidden md:block">
         <button 
           id="contact-btn" 
-          class="text-gray-900 font-medium text-lg hover:text-primary transition-colors cursor-pointer"
+          class="text-gray-900 font-medium text-lg hover:text-primary transition-colors cursor-pointer morph-text inline-block"
+          style="min-width: 100px;"
         >
-          CONTACT
+          <span class="morph-char">C</span><span class="morph-char">O</span><span class="morph-char">N</span><span class="morph-char">T</span><span class="morph-char">A</span><span class="morph-char">C</span><span class="morph-char">T</span>
         </button>
         
         <!-- Tooltip with copy email (hidden by default) -->
@@ -129,6 +143,64 @@
 </header>
 
 <script>
+  // Character morphing effect
+  const worksLink = document.getElementById('works-link');
+  const logoLink = document.getElementById('logo-link');
+  const contactMorphBtn = document.getElementById('contact-btn');
+  
+  const morphTexts = {
+    'works-link': { japanese: 'サクヒンシュウ', original: 'WORKS' }, // Sakuhin-shū en hiragana
+    'logo-link': { japanese: 'センリ', original: 'SENRI' }, // Senri en katakana
+    'contact-btn': { japanese: 'レンラク', original: 'CONTACT' } // Renraku en katakana
+  };
+  
+  function setupMorphing(element: HTMLElement | null, id: string) {
+    if (!element) return;
+    
+    const { japanese, original } = morphTexts[id as keyof typeof morphTexts];
+    let morphTimeout: ReturnType<typeof setTimeout> | null = null;
+    let isAnimating = false;
+
+    function morphToJapanese() {
+      if (isAnimating) return;
+      isAnimating = true;
+      
+      const chars = element.querySelectorAll('.morph-char');
+      
+      // Instant change to Japanese
+      chars.forEach((char, i) => {
+        if (i < japanese.length) {
+          (char as HTMLElement).textContent = japanese[i];
+          (char as HTMLElement).style.display = 'inline-block';
+        } else {
+          (char as HTMLElement).style.display = 'none';
+        }
+      });
+      
+      // Then morph back letter by letter
+      let currentIndex = 0;
+      const morphInterval = setInterval(() => {
+        if (currentIndex < original.length) {
+          (chars[currentIndex] as HTMLElement).textContent = original[currentIndex];
+          (chars[currentIndex] as HTMLElement).style.display = 'inline-block';
+          currentIndex++;
+        } else {
+          clearInterval(morphInterval);
+          isAnimating = false;
+        }
+      }, 60); // 60ms per character for smooth transition
+    }
+
+    element.addEventListener('mouseenter', () => {
+      if (morphTimeout) clearTimeout(morphTimeout);
+      morphToJapanese();
+    });
+  }
+
+  setupMorphing(worksLink, 'works-link');
+  setupMorphing(logoLink, 'logo-link');
+  setupMorphing(contactMorphBtn, 'contact-btn');
+
   // Mobile Menu
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
@@ -190,7 +262,7 @@
   const contactTooltip = document.getElementById('contact-tooltip');
   
   let isTooltipVisible = false;
-  let hideTimeout = null;
+  let hideTimeout: ReturnType<typeof setTimeout> | null = null;
   
   // Show tooltip on hover (desktop) or click (mobile)
   const showTooltip = () => {
@@ -256,7 +328,7 @@
   // Close tooltip when clicking outside (mobile)
   document.addEventListener('click', (e) => {
     if (window.innerWidth < 768 && isTooltipVisible && e.target) {
-      const target = e.target;
+      const target = e.target as HTMLElement;
       if (!target.closest('#contact-btn') && !target.closest('#contact-tooltip')) {
         contactTooltip?.classList.add('opacity-0', 'pointer-events-none');
         contactTooltip?.classList.remove('opacity-100', 'pointer-events-auto');

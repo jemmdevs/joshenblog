@@ -1,86 +1,92 @@
 ---
-title: "HCI: Principles, Biases, and Designing for Better Decisions"
-description: "An expert, practical view on Human-Computer Interaction: what to prioritize, how to avoid cognitive traps, and how to design for fast, correct decisions."
+title: "Why I Love Human-Computer interface Designing"
+description: "A personal, practical reflection on Human-Computer Interaction — why it matters, what we keep getting wrong, and how great interfaces guide correct decisions effortlessly."
 date: 2025-10-22
 author: "SENRI"
 image: ""
-tags: ["HCI", "UX", "cognición", "accesibilidad"]
+tags: ["HCI", "UX", "cognition", "accessibility"]
 ---
 
-Human-Computer Interaction (HCI) is not about "pretty screens"; it is about reducing cognitive friction so people achieve outcomes with less effort, fewer errors, and greater confidence. Below is a pragmatic, expert-level guide you can apply to real products today.
+Human-Computer Interaction (HCI) has always fascinated me because it's not really about screens or pixels — it’s about **how people think** when they use technology.  
+
+Good interfaces don’t impress you visually first; they *disappear*. They let you focus on what you’re trying to achieve instead of making you decode what the software wants from you. That’s the kind of design that feels almost invisible but leaves you thinking, *“Wow, that was smooth.”*  
+
+Here are a few principles that, over time, I’ve found make that possible.
 
 ## 1) Prioritize tasks, not features
 
-The metric that matters is time (and effort) to complete the core task. Ask:
+Every product wants to do a thousand things. Users don’t. They just want to get *their* task done and move on.
 
-- What is the 80% task users try to complete? Elevate that path visually and semantically.
-- How many steps, context switches, and decisions are required? Remove unnecessary forks.
-- Which signals are essential to decide? Surface high-value information first.
+So, I always ask:  
+- What’s the 80% task that defines success here?  
+- How many clicks, context switches, and micro-decisions are in the way?  
 
-Typical outcome: fewer, clearer elements. Fewer micro-decisions, more flow.
+When you design around that, the interface naturally becomes cleaner. Fewer elements, fewer distractions, more flow.  
 
-## 2) Cognitive load: working memory is limited
+## 2) Cognitive load: our brain’s RAM is tiny  
 
-People retain roughly 3-5 items at once. Design with chunking and progression:
+We can hold maybe 3–5 things in working memory before it all falls apart. That’s why grouping, chunking, and progressive disclosure are so powerful — they reduce noise.  
 
-- Group by proximity and meaning.
-- Defer secondary details (progressive disclosure).
-- Text beats ambiguous icons when time matters.
+And yes, text usually beats icons when time matters. A clear “Download invoice” will always outperform a mystery cloud-arrow.  
 
-Rule of thumb: on decision screens, prefer one column and a clear vertical hierarchy.
+## 3) Clarity beats cleverness  
 
-## 3) Clear signals and affordances
+People act when they *understand* what’s interactive and what will happen next. So instead of chasing “wow” moments, I aim for *predictability*.  
 
-People act when they understand what is clickable and what will happen next. Avoid neutral states.
+- Contrast, hover, and focus states must feel alive.  
+- Action labels should describe outcomes, not mechanics.  
+- Feedback must be instant, visible, and human.  
 
-- Provide sufficient contrast and consistent hover/focus/pressed states.
-- Action labels describe outcomes ("Create invoice") rather than mechanics ("Save").
-- System feedback: visible, timely loading, success, and error indicators.
+Predictable design is faster design.  
 
-## 4) Time and perceived latency
+## 4) Speed is also a feeling  
 
-It's not only about being fast; it's about feeling fast. HCI techniques for perceived latency:
+Actual milliseconds matter less than how *responsive* an interface feels. Skeleton loaders, optimistic updates, and progress indicators give users confidence that the system is alive and listening.  
 
-- Instant feedback (optimistic if reversible).
-- Skeletons or placeholders shaped like the ultimate content.
-- Long tasks: inform progress and useful ETA (not an endless spinner).
+When the interface feels snappy, users trust it more — even if it’s not truly faster.  
 
-## 5) Cognitive biases: design for correct decisions
+## 5) Designing for human biases  
 
-Every UI influences decisions. Use this ethically.
+We all have mental shortcuts. A good interface respects them.  
 
-- Herding effects: defaults and ordering matter - justify them with user benefit.
-- Anchoring: the first number frames judgment - show teaching references, not manipulative ones.
-- Choice paralysis: offer 3-5 meaningful options; push the rest aside.
+- Defaults influence behavior, so make them ethical.  
+- Anchors frame judgment — don’t manipulate them.  
+- Too many choices? People freeze. Offer fewer, better ones.  
 
-## 6) Accessibility as a value multiplier
+HCI isn’t about “nudging” users; it’s about helping them make the *right* decision with minimal effort.  
 
-Accessible means more robust, more usable, and better SEO.
+## 6) Accessibility is good design  
 
-- AA/AAA contrast as needed.
-- Full, visible keyboard navigation.
-- Alt text, roles, and descriptions that add meaning, not noise.
+Accessibility isn’t a checklist; it’s a multiplier. Higher contrast, keyboard navigation, meaningful alt text — these make software stronger, not just compliant.  
 
-## 7) Typography and reading
+When you design for accessibility, you usually end up improving *everything* else, including SEO and usability.  
 
-For sustained reading, use generous line height, moderate column widths (65-75 characters), and avoid dense blocks. Keep a predictable typographic hierarchy (H1, H2, paragraph) and cross-page consistency.
+## 7) Reading and rhythm  
 
-## 8) Micro-interactions and predictability
+Long texts or forms feel lighter when typography has rhythm — proper spacing, line height, and hierarchy. It’s not about aesthetics; it’s about cognitive ease.  
 
-Smooth transitions tell causality: "I did X, Y happened." Avoid gratuitous motion. Every animation should clarify state or hierarchy.
+The less your eyes work, the more your mind can focus on meaning.  
 
-## 9) Measure with real users
+## 8) Micro-interactions that make sense  
 
-Metrics without context mislead. Complement analytics with quick moderated sessions, A/B tests with explicit hypotheses, and accessibility reviews. Ask: "What error would a rushed person make?" - and test it.
+A smooth transition or button feedback isn’t decoration — it’s communication. Motion should tell users *why* something happened. Anything else is just noise.  
 
-## 10) Operating principles for teams
+## 9) Always test reality  
 
-1. One change, one hypothesis: what you'll improve and how you'll measure it.
-2. Visible UX debt: a backlog tracking clarity, accessibility, and consistency issues.
-3. Design with constraints: shared typographic, spacing, and color tokens across the product.
+Analytics alone won’t tell you if your design *feels* right. You need real people, even if it’s five quick tests. Watch where they hesitate — that’s where the design is lying to them.  
+
+And my favorite question to ask: *“What mistake would a rushed person make here?”*  
+
+## 10) Design as a team habit  
+
+1. One change → one hypothesis → one measurement.  
+2. Track UX debt the same way you track technical debt.  
+3. Share tokens and constraints across the product to stay consistent.  
+
+That’s how you build clarity that scales.
 
 ---
 
-Effective HCI is the sum of small, consistent, measurable decisions. Design to reduce effort, anticipate errors, and guide correct choices. Aesthetics support; clarity leads.
+At its core, HCI is about empathy expressed through structure. You’re not decorating — you’re translating human thought into interface logic.  
 
-
+When you get it right, everything feels *obvious*. And that, to me, is what great design really is.

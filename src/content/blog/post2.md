@@ -1,86 +1,90 @@
 ---
-title: "POST2"
-description: "An expert, practical view on Human-Computer Interaction: what to prioritize, how to avoid cognitive traps, and how to design for fast, correct decisions."
-date: 2025-10-23
+title: "From Coders to Architects"
+description: "How AI is reshaping programming: from code typing to software orchestration, and why the next great engineer will think more like an architect than a coder."
+date: 2025-10-24
 author: "SENRI"
 image: ""
-tags: ["HCI", "UX", "cognición", "accesibilidad"]
----
-
-Human-Computer Interaction (HCI) is not about "pretty screens"; it is about reducing cognitive friction so people achieve outcomes with less effort, fewer errors, and greater confidence. Below is a pragmatic, expert-level guide you can apply to real products today.
-
-## 1) Prioritize tasks, not features
-
-The metric that matters is time (and effort) to complete the core task. Ask:
-
-- What is the 80% task users try to complete? Elevate that path visually and semantically.
-- How many steps, context switches, and decisions are required? Remove unnecessary forks.
-- Which signals are essential to decide? Surface high-value information first.
-
-Typical outcome: fewer, clearer elements. Fewer micro-decisions, more flow.
-
-## 2) Cognitive load: working memory is limited
-
-People retain roughly 3-5 items at once. Design with chunking and progression:
-
-- Group by proximity and meaning.
-- Defer secondary details (progressive disclosure).
-- Text beats ambiguous icons when time matters.
-
-Rule of thumb: on decision screens, prefer one column and a clear vertical hierarchy.
-
-## 3) Clear signals and affordances
-
-People act when they understand what is clickable and what will happen next. Avoid neutral states.
-
-- Provide sufficient contrast and consistent hover/focus/pressed states.
-- Action labels describe outcomes ("Create invoice") rather than mechanics ("Save").
-- System feedback: visible, timely loading, success, and error indicators.
-
-## 4) Time and perceived latency
-
-It's not only about being fast; it's about feeling fast. HCI techniques for perceived latency:
-
-- Instant feedback (optimistic if reversible).
-- Skeletons or placeholders shaped like the ultimate content.
-- Long tasks: inform progress and useful ETA (not an endless spinner).
-
-## 5) Cognitive biases: design for correct decisions
-
-Every UI influences decisions. Use this ethically.
-
-- Herding effects: defaults and ordering matter - justify them with user benefit.
-- Anchoring: the first number frames judgment - show teaching references, not manipulative ones.
-- Choice paralysis: offer 3-5 meaningful options; push the rest aside.
-
-## 6) Accessibility as a value multiplier
-
-Accessible means more robust, more usable, and better SEO.
-
-- AA/AAA contrast as needed.
-- Full, visible keyboard navigation.
-- Alt text, roles, and descriptions that add meaning, not noise.
-
-## 7) Typography and reading
-
-For sustained reading, use generous line height, moderate column widths (65-75 characters), and avoid dense blocks. Keep a predictable typographic hierarchy (H1, H2, paragraph) and cross-page consistency.
-
-## 8) Micro-interactions and predictability
-
-Smooth transitions tell causality: "I did X, Y happened." Avoid gratuitous motion. Every animation should clarify state or hierarchy.
-
-## 9) Measure with real users
-
-Metrics without context mislead. Complement analytics with quick moderated sessions, A/B tests with explicit hypotheses, and accessibility reviews. Ask: "What error would a rushed person make?" - and test it.
-
-## 10) Operating principles for teams
-
-1. One change, one hypothesis: what you'll improve and how you'll measure it.
-2. Visible UX debt: a backlog tracking clarity, accessibility, and consistency issues.
-3. Design with constraints: shared typographic, spacing, and color tokens across the product.
+tags: ["AI", "software architecture", "future of programming", "prompt engineering"]
 
 ---
 
-Effective HCI is the sum of small, consistent, measurable decisions. Design to reduce effort, anticipate errors, and guide correct choices. Aesthetics support; clarity leads.
+Programming is quietly shifting from writing code to directing it. With each leap in AI models, we get closer to a world where the role of the programmer evolves — from someone who builds logic line by line to someone who designs systems by intent, using natural language to orchestrate the work of intelligent agents.
 
+This is not hype. It's the next logical layer in software abstraction.
 
+1) From syntax to semantics
+
+For decades, progress in programming has meant raising the abstraction level: from assembly → to C → to Python → to frameworks → to APIs → to “no-code.” AI is the next step — but instead of abstracting syntax, it abstracts intent.
+
+We’ll stop telling computers how to do something and start describing what we want done. The quality of our output will depend less on our typing speed and more on how precisely we can express a system’s logic, constraints, and tradeoffs in words.
+
+In other words: the prompt becomes the new programming language.
+
+2) The rise of the “software architect-prompter”
+
+Think of the architect vs. the bricklayer. The architect sketches the system — its structure, forces, and dependencies — while the bricklayer executes the pattern.
+
+Soon, the “bricklayer” will be AI: it can scaffold, refactor, and test faster than any human. But someone still needs to ensure coherence, scalability, and correctness. That’s where the new role appears: the AI software architect.
+
+This person doesn’t just prompt; they orchestrate:
+
+Define the architecture and constraints.
+
+Align components generated by different AI tools.
+
+Verify, reason, and document intent.
+
+Maintain the vision of the system as it evolves.
+
+In essence, the architect becomes a director of reasoning systems.
+
+3) Prompting as system design
+
+Good prompting isn’t about clever phrasing — it’s about clear mental models.
+
+Each AI acts like a specialized collaborator. You need to communicate scope, dependencies, and desired behavior as if you were leading a multidisciplinary engineering team. That means:
+
+Structuring prompts modularly (like functions).
+
+Passing context deliberately (not everything everywhere).
+
+Testing outputs against measurable criteria.
+
+Future IDEs will look more like collaborative dashboards where human architects guide a network of models, each focused on code generation, testing, documentation, or optimization.
+
+4) Human strengths remain upstream
+
+AI can reason locally — but not strategically. It doesn’t understand why a product exists, who it serves, or what tradeoffs are acceptable.
+
+Humans will remain essential for:
+
+System thinking: connecting technical and human needs.
+
+Prioritization: knowing what matters first.
+
+Ethics and alignment: ensuring decisions serve people, not just algorithms.
+
+In short: AI may handle syntax, but humans still define purpose.
+
+5) What skills matter now
+
+To thrive in this new landscape, developers must evolve from implementers to orchestrators. That means cultivating:
+
+Abstraction thinking: seeing systems, not snippets.
+
+Communication clarity: explaining intent to both humans and AIs.
+
+Verification skills: reasoning about correctness without relying on “trust.”
+
+Tool literacy: knowing how to integrate and supervise AI systems across the stack.
+
+Writing code will still matter — but as a diagnostic tool, not the primary craft.
+
+6) The new craftsmanship
+
+We used to say “learn to code.” Soon, the advice will shift to “learn to think in systems.” The craft will lie in shaping conversations between humans and machines — conversations that produce reliable, elegant, and human-centered software.
+
+The artistry of software will move upstream: the orchestration, the constraints, the architecture. It’s less about control, more about composition.
+
+AI won’t replace programmers — it will transform them into architects.
+Those who adapt won’t just “use” AI; they’ll conduct it — turning lines of code into symphonies of logic.
