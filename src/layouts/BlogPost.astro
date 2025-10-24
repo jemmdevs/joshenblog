@@ -9,10 +9,11 @@ interface Props {
   author: string;
   authorAvatar?: string;
   image?: string;
+  bannerColor?: string;
   tags?: string[];
 }
 
-const { title, description, date, author, authorAvatar, image, tags = [] } = Astro.props;
+const { title, description, date, author, authorAvatar, image, bannerColor, tags = [] } = Astro.props;
 
 const formattedDate = new Intl.DateTimeFormat('en-US', {
   weekday: 'long',
@@ -29,8 +30,8 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
     <!-- Banner (with optional background image) -->
     <section class="px-4 lg:px-8 py-10">
       <div class="container mx-auto">
-        <div class="relative max-w-6xl mx-auto rounded-2xl shadow-xl overflow-hidden bg-primary text-white">
-          <img src="/bannerIMG.png" alt={title} class="absolute right-6 bottom-0 h-[85%] object-contain pointer-events-none select-none" loading="eager" />
+        <div class="relative max-w-6xl mx-auto rounded-2xl shadow-xl overflow-hidden bg-primary text-white" style={bannerColor ? `background-color: ${bannerColor}` : ''}>
+          <img src={image || "/bannerIMG.png"} alt={title} class="absolute right-6 bottom-0 h-[85%] object-contain pointer-events-none select-none" loading="eager" />
           <div class="relative px-6 lg:px-10 pt-14 lg:pt-20 pb-24">
             <div class="max-w-4xl pr-40">
               <h1 class="text-[20px] leading-[24px] md:text-[64px] md:leading-[70px] font-black tracking-tight">

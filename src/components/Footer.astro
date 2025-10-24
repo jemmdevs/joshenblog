@@ -7,23 +7,43 @@ const currentYear = new Date().getFullYear();
     <div class="grid grid-cols-12 gap-8">
       <!-- Left: Contact me -->
       <div class="col-span-12 lg:col-span-6">
-        <div class="text-sm font-semibold uppercase tracking-wide text-gray-700">Contact me</div>
+        <div 
+          id="contact-me-morph"
+          class="text-sm font-semibold uppercase tracking-wide text-gray-700 morph-text inline-block"
+          style="min-width: 100px;"
+        >
+          <span class="morph-char">C</span><span class="morph-char">O</span><span class="morph-char">N</span><span class="morph-char">T</span><span class="morph-char">A</span><span class="morph-char">C</span><span class="morph-char">T</span><span class="morph-char">&nbsp;</span><span class="morph-char">M</span><span class="morph-char">E</span>
+        </div>
         <div class="mt-3">
           <span class="text-gray-800 block mb-3">jemmdev@gmail.com</span>
           <div class="flex items-center gap-2">
-            <button id="copy-email" class="flex items-center justify-center gap-2 px-4 h-10 rounded-md bg-gray-800 text-white hover:bg-gray-900 transition-colors" aria-label="Copy email">
+            <button 
+              id="copy-email" 
+              class="flex items-center justify-center gap-2 px-4 h-10 rounded-md bg-gray-800 text-white hover:bg-gray-900 transition-colors morph-text inline-flex"
+              aria-label="Copy email"
+              style="min-width: 80px;"
+            >
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
               </svg>
-              <span class="text-sm font-medium">Copy</span>
+              <span class="text-sm font-medium">
+                <span class="morph-char">C</span><span class="morph-char">o</span><span class="morph-char">p</span><span class="morph-char">y</span>
+              </span>
             </button>
-            <a href="mailto:jemmdev@gmail.com" class="flex items-center justify-center gap-2 px-4 h-10 rounded-md bg-[#C03540] text-white hover:bg-[#b12e38] transition-colors">
+            <a 
+              href="mailto:jemmdev@gmail.com" 
+              id="email-morph"
+              class="flex items-center justify-center gap-2 px-4 h-10 rounded-md bg-[#C03540] text-white hover:bg-[#b12e38] transition-colors morph-text inline-flex"
+              style="min-width: 85px;"
+            >
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                 <polyline points="22,6 12,13 2,6"></polyline>
               </svg>
-              <span class="text-sm font-medium">Email</span>
+              <span class="text-sm font-medium">
+                <span class="morph-char">E</span><span class="morph-char">m</span><span class="morph-char">a</span><span class="morph-char">i</span><span class="morph-char">l</span>
+              </span>
             </a>
           </div>
         </div>
@@ -33,12 +53,35 @@ const currentYear = new Date().getFullYear();
       <!-- Right: Works + name + socials + copyright -->
       <div class="col-span-12 lg:col-span-6 flex flex-col lg:flex-row items-start justify-start lg:justify-end gap-4 lg:gap-6 z-10">
         <!-- Works button -->
-        <a href="https://josencv.vercel.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-5 h-10 rounded-md bg-[#C03540] text-white font-semibold hover:bg-[#b12e38] transition-colors self-start">View my Works</a>
+        <a 
+          href="https://josencv.vercel.app" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          id="works-morph"
+          class="inline-flex items-center justify-center px-5 h-10 rounded-md bg-[#C03540] text-white font-semibold hover:bg-[#b12e38] transition-colors self-start morph-text"
+          style="min-width: 140px;"
+        >
+          <span class="morph-char">V</span><span class="morph-char">i</span><span class="morph-char">e</span><span class="morph-char">w</span><span class="morph-char">&nbsp;</span><span class="morph-char">m</span><span class="morph-char">y</span><span class="morph-char">&nbsp;</span><span class="morph-char">W</span><span class="morph-char">o</span><span class="morph-char">r</span><span class="morph-char">k</span>
+        </a>
         <div class="hidden lg:block w-px h-10 bg-gray-300"></div>
         <!-- Social links stacked (text) -->
         <nav class="flex flex-col text-gray-600 gap-2 self-start">
-          <a href="https://github.com/jemmdevs" class="hover:text-[#C03540] transition-colors">GitHub</a>
-          <a href="https://www.linkedin.com/in/jose-enrique-mateo-munoz-102b28374/" class="hover:text-[#C03540] transition-colors">LinkedIn</a>
+          <a 
+            href="https://github.com/jemmdevs" 
+            id="github-morph"
+            class="hover:text-[#C03540] transition-colors morph-text inline-block"
+            style="min-width: 60px;"
+          >
+            <span class="morph-char">G</span><span class="morph-char">i</span><span class="morph-char">t</span><span class="morph-char">H</span><span class="morph-char">u</span><span class="morph-char">b</span>
+          </a>
+          <a 
+            href="https://www.linkedin.com/in/jose-enrique-mateo-munoz-102b28374/" 
+            id="linkedin-morph"
+            class="hover:text-[#C03540] transition-colors morph-text inline-block"
+            style="min-width: 75px;"
+          >
+            <span class="morph-char">L</span><span class="morph-char">i</span><span class="morph-char">n</span><span class="morph-char">k</span><span class="morph-char">e</span><span class="morph-char">d</span><span class="morph-char">I</span><span class="morph-char">n</span>
+          </a>
         </nav>
         </div>
       </div>
@@ -57,6 +100,68 @@ const currentYear = new Date().getFullYear();
   </div>
 
   <script>
+    // Character morphing effect for footer
+    const morphTexts = {
+      'contact-me-morph': { japanese: 'レンラクサキ', original: 'CONTACT ME' },
+      'copy-email': { japanese: 'コピー', original: 'Copy' },
+      'email-morph': { japanese: 'メール', original: 'Email' },
+      'works-morph': { japanese: 'サクヒンヲミル', original: 'View my Works' },
+      'github-morph': { japanese: 'ギットハブ', original: 'GitHub' },
+      'linkedin-morph': { japanese: 'リンクトイン', original: 'LinkedIn' }
+    };
+    
+    function setupFooterMorphing(id: string) {
+      const element = document.getElementById(id);
+      if (!element) return;
+      
+      const { japanese, original } = morphTexts[id as keyof typeof morphTexts];
+      let isAnimating = false;
+
+      function morphToJapanese() {
+        if (isAnimating) return;
+        isAnimating = true;
+        
+        const chars = element.querySelectorAll('.morph-char');
+        
+        // Instant change to Japanese
+        chars.forEach((char, i) => {
+          if (i < japanese.length) {
+            (char as HTMLElement).innerHTML = japanese[i];
+            (char as HTMLElement).style.display = 'inline-block';
+          } else {
+            (char as HTMLElement).style.display = 'none';
+          }
+        });
+        
+        // Then morph back letter by letter
+        let currentIndex = 0;
+        const morphInterval = setInterval(() => {
+          if (currentIndex < original.length) {
+            const char = original[currentIndex];
+            (chars[currentIndex] as HTMLElement).innerHTML = char === ' ' ? '&nbsp;' : char;
+            (chars[currentIndex] as HTMLElement).style.display = 'inline-block';
+            currentIndex++;
+          } else {
+            clearInterval(morphInterval);
+            isAnimating = false;
+          }
+        }, 60);
+      }
+
+      element.addEventListener('mouseenter', () => {
+        morphToJapanese();
+      });
+    }
+
+    // Setup morphing for all footer elements
+    setupFooterMorphing('contact-me-morph');
+    setupFooterMorphing('copy-email');
+    setupFooterMorphing('email-morph');
+    setupFooterMorphing('works-morph');
+    setupFooterMorphing('github-morph');
+    setupFooterMorphing('linkedin-morph');
+
+    // Copy email functionality
     const copyBtn = document.getElementById('copy-email');
     const toast = document.getElementById('copy-toast');
     
@@ -84,4 +189,3 @@ const currentYear = new Date().getFullYear();
     });
   </script>
 </footer>
-
