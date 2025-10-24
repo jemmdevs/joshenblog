@@ -1,5 +1,5 @@
 ---
-title: "Why I Love Human-Computer interface Designing"
+title: "Why I Love Human-Computer Interface Designing"
 description: "A personal, practical reflection on Human-Computer Interaction — why it matters, what we keep getting wrong, and how great interfaces guide correct decisions effortlessly."
 date: 2025-10-22
 author: "SENRI"
