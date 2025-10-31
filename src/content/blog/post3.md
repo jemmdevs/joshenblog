@@ -55,12 +55,12 @@ navHoverColor: "#7C3AED"
 # Este color se aplica a todos los enlaces que escribas dentro del contenido markdown
 # Por ejemplo, el enlace a "Azuki" en este post usará este color
 # Si lo dejas vacío, usará "#C62F41" (rojo más claro) por defecto
-contentLinkColor: "#A78BFA"
+contentLinkColor: "#0378BD"
 
 # 🔙 Color de botones de navegación "← Back" y "Top ↑" (solo en la página de detalle)
 # Estos botones aparecen al final del contenido del post
 # Si lo dejas vacío, usará "#C03540" (rojo) por defecto
-navigationColor: "#8B5CF6"
+navigationColor: "#0378BD"
 
 # 🎨 Color de fondo de la página de detalle del post
 # Cambia el color de fondo de toda la página cuando se ve este post
@@ -84,9 +84,14 @@ logoHoverColor: "#A78BFA"
 bannerTextColor: "#FFFFFF"
 
 # 📝 Color del texto del contenido (solo en la página de detalle)
-# Este color se aplica a todo el texto del contenido (párrafos, títulos, listas)
+# Este color se aplica al texto normal (párrafos, listas)
 # Si lo dejas vacío, usará negro (#000000) por defecto
 contentTextColor: "#1F2937"
+
+# 📝 Color de los títulos (h2, h3, etc.) en el contenido (solo en la página de detalle)
+# Este color se aplica a los títulos dentro del contenido del post
+# Si lo dejas vacío, usará negro (#000000) por defecto
+contentHeadingColor: "#5B21B6"
 
 # 🏷️ Tags del post (no afectan la apariencia visual, solo metadatos)
 tags: ["HCI", "UX", "design inspiration", "Azuki", "web design"]

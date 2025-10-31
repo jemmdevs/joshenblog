@@ -110,7 +110,7 @@ const currentYear = new Date().getFullYear();
   <div class="absolute left-0 right-0 bottom-0 h-[4px]" style={`background-color: ${navColor};`}></div>
 
   <!-- Character image anchored to the bottom red line -->
-  <img src={footerImage} alt="Footer art" class="pointer-events-none select-none absolute bottom-1 left-1/4 md:left-1/3 lg:left-[45%] h-64 md:h-72 lg:h-80 object-contain z-0" loading="lazy" />
+  <img src={footerImage} alt="Footer art" class="pointer-events-none select-none [-webkit-user-select:none] [-webkit-user-drag:none] absolute bottom-1 left-1/4 md:left-1/3 lg:left-[45%] h-64 md:h-72 lg:h-80 object-contain z-0" loading="lazy" style="-webkit-user-select: none; -webkit-user-drag: none;" />
 
   <!-- Toast notification -->
   <div id="copy-toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-black text-white px-6 py-3 rounded-lg shadow-lg transition-all duration-300 opacity-0 pointer-events-none z-50 font-medium">

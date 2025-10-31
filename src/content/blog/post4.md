@@ -81,12 +81,17 @@ logoHoverColor: "#0378BD"
 # 📝 Color del texto del banner (título y fecha/autor) (solo en la página de detalle)
 # Este color se aplica al título grande y a la metadata (fecha y autor) del banner
 # Si lo dejas vacío, usará blanco (#FFFFFF) por defecto
-bannerTextColor: "#080808"
+bannerTextColor: "#FFFFFF"
 
 # 📝 Color del texto del contenido (solo en la página de detalle)
 # Este color se aplica a todo el texto del contenido (párrafos, títulos, listas)
 # Si lo dejas vacío, usará negro (#000000) por defecto
 contentTextColor: "#1F2937"
+
+# 📝 Color de los títulos (h2, h3, etc.) en el contenido (solo en la página de detalle)
+# Este color se aplica a los títulos dentro del contenido del post
+# Si lo dejas vacío, usará negro (#000000) por defecto
+contentHeadingColor: "#0378BD"
 
 # 🏷️ Tags del post (no afectan la apariencia visual, solo metadatos)
 tags: ["HCI", "UX", "design inspiration", "Azuki", "web design"]

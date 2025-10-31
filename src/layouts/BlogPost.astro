@@ -19,6 +19,7 @@ interface Props {
   pageBackground?: string;     // Color de fondo de la página (si no se especifica, usa #F5F5F5)
   bannerTextColor?: string;    // Color del título del banner (si no se especifica, usa blanco)
   contentTextColor?: string;   // Color del texto del contenido (si no se especifica, usa negro)
+  contentHeadingColor?: string; // Color de los títulos (h2, h3, etc.) en el contenido
   logoHoverColor?: string;     // Color de hover de SENRI y WORKS (si no se especifica, usa navHoverColor)
   cardHoverColor?: string;     // Color de hover en la lista de posts (usado en página principal)
   tags?: string[];
@@ -40,6 +41,7 @@ const {
   pageBackground,
   bannerTextColor,
   contentTextColor,
+  contentHeadingColor,
   logoHoverColor,
   cardHoverColor,
   tags = [] 
@@ -98,14 +100,15 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
 
     <!-- Custom colors for this post (CSS Variables) -->
-    <style define:vars={{ 
+    <style define:vars={{
       customNavColor: navColor || '#C03540',
       customNavHoverColor: navHoverColor || '#C62F41',
       customContentLinkColor: contentLinkColor || '#C62F41',
       customNavigationColor: navigationColor || '#C03540',
       customPageBackground: pageBackground || '#F5F5F5',
       customBannerTextColor: bannerTextColor || '#FFFFFF',
-      customContentTextColor: contentTextColor || '#000000'
+      customContentTextColor: contentTextColor || '#000000',
+      customContentHeadingColor: contentHeadingColor || '#000000'
     }}>
       /* Aplicar colores personalizados a botones y elementos de navbar */
       .custom-nav-color {
@@ -131,18 +134,90 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
         color: var(--customBannerTextColor) !important;
       }
       
-      /* Color del texto del contenido */
+      /* Color del texto del contenido (párrafos y texto normal) */
+      .post-content,
       .post-content p,
-      .post-content h2,
-      .post-content h3,
-      .post-content h4,
       .post-content li,
-      .post-content {
+      .post-content span:not(a span),
+      .post-content div:not(:has(a)) {
         color: var(--customContentTextColor) !important;
       }
       
-      /* Color de enlaces en el contenido del post */
+      /* Color de los títulos (h2, h3, etc.) */
+      .post-content h2,
+      .post-content h3,
+      .post-content h4,
+      .post-content h5,
+      .post-content h6 {
+        color: var(--customContentHeadingColor) !important;
+      }
+      
+      /* Color de enlaces en el contenido del post - DEBE VENIR DESPUÉS PARA SOBRESCRIBIR */
+      /* Máxima especificidad posible */
+      html body main article section .post-content p a,
+      html body main article section .post-content li a,
+      html body main article section .post-content div a,
+      html body main article section .post-content a,
+      html body main article .post-content p a,
+      html body main article .post-content li a,
+      html body main article .post-content div a,
+      html body main article .post-content a,
+      body main article .post-content p a,
+      body main article .post-content li a,
+      body main article .post-content a,
+      main article .post-content p a,
+      main article .post-content li a,
+      main article .post-content a,
+      article .post-content p a,
+      article .post-content li a,
+      article .post-content a,
+      section .post-content p a,
+      section .post-content li a,
+      section .post-content a,
+      .post-content p a,
+      .post-content li a,
       .post-content a {
+        color: var(--customContentLinkColor) !important;
+        text-decoration: none !important;
+      }
+      
+      html body main article section .post-content p a:hover,
+      html body main article section .post-content li a:hover,
+      html body main article section .post-content a:hover,
+      html body main article .post-content p a:hover,
+      html body main article .post-content li a:hover,
+      html body main article .post-content a:hover,
+      body main article .post-content p a:hover,
+      body main article .post-content li a:hover,
+      body main article .post-content a:hover,
+      main article .post-content p a:hover,
+      main article .post-content li a:hover,
+      main article .post-content a:hover,
+      article .post-content p a:hover,
+      article .post-content li a:hover,
+      article .post-content a:hover,
+      .post-content p a:hover,
+      .post-content li a:hover,
+      .post-content a:hover {
+        color: var(--customContentLinkColor) !important;
+        text-decoration: underline !important;
+      }
+      
+      html body main article section .post-content p a:link,
+      html body main article .post-content p a:link,
+      body main article .post-content p a:link,
+      .post-content p a:link,
+      .post-content li a:link,
+      .post-content a:link {
+        color: var(--customContentLinkColor) !important;
+      }
+      
+      html body main article section .post-content p a:visited,
+      html body main article .post-content p a:visited,
+      body main article .post-content p a:visited,
+      .post-content p a:visited,
+      .post-content li a:visited,
+      .post-content a:visited {
         color: var(--customContentLinkColor) !important;
       }
       
@@ -165,18 +240,6 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
         background-color: var(--customBannerTextColor) !important;
         opacity: 0.7;
       }
-      
-      /* Color del texto del contenido */
-      .post-content p,
-      .post-content h2,
-      .post-content h3,
-      .post-content h4,
-      .post-content h5,
-      .post-content h6,
-      .post-content li,
-      .post-content {
-        color: var(--customContentTextColor) !important;
-      }
     </style>
   </head>
   <body class="text-gray-900 antialiased">
@@ -189,19 +252,19 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
     <section class="px-4 lg:px-8 py-10">
       <div class="container mx-auto">
         <div class="relative max-w-6xl mx-auto rounded-2xl shadow-xl overflow-hidden bg-primary text-white" style={bannerColor ? `background-color: ${bannerColor}` : ''}>
-          <img src={image || "/bannerIMG.png"} alt={title} class="absolute right-6 bottom-0 h-[85%] object-contain pointer-events-none select-none" loading="eager" />
+          <img src={image || "/bannerIMG.png"} alt={title} class="absolute right-6 bottom-0 h-[85%] object-contain pointer-events-none select-none [-webkit-user-select:none] [-webkit-user-drag:none]" loading="eager" style="-webkit-user-select: none; -webkit-user-drag: none; -webkit-appearance: none;" />
           <div class="relative px-6 lg:px-10 pt-14 lg:pt-20 pb-24">
             <div class="max-w-4xl pr-40">
               <h1 class="text-[20px] leading-[24px] md:text-[64px] md:leading-[70px] font-black tracking-tight banner-title">
                 {title}
               </h1>
-              <div class="mt-4">
-                <div class="w-148 h-px banner-divider"></div>
-              </div>
-              <div class="font-pixel font-normal uppercase text-[12px] md:text-[12px] leading-4 flex items-center gap-3 absolute left-6 lg:left-10 bottom-6 banner-metadata">
-                <time datetime={date.toISOString()}>{formattedDate}</time>
-                <span>—</span>
-                <span>{author}</span>
+              <div class="absolute left-6 lg:left-10 bottom-6 right-[35%]">
+                <div class="w-full h-px banner-divider mb-2"></div>
+                <div class="font-pixel font-normal uppercase text-[12px] md:text-[12px] leading-4 flex items-center gap-3 banner-metadata">
+                  <time datetime={date.toISOString()}>{formattedDate}</time>
+                  <span>—</span>
+                  <span>{author}</span>
+                </div>
               </div>
             </div>
           </div>
@@ -253,7 +316,7 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
   .post-content h5,
   .post-content h6 {
     font-weight: 900;
-    color: #000;
+    color: var(--customContentHeadingColor) !important;
     margin-top: 2rem;
     margin-bottom: 0.75rem;
     line-height: 1.3;
@@ -294,15 +357,21 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
     margin-bottom: 0.5rem;
   }
 
-  /* Links */
+  /* Links - Color controlado por customContentLinkColor en <style define:vars> arriba */
   .post-content a {
-    color: #C62F41;
     text-decoration: none;
     font-weight: 500;
+    color: var(--customContentLinkColor) !important;
   }
   
   .post-content a:hover {
-    text-decoration: underline;
+    color: var(--customContentLinkColor) !important;
+    text-decoration: underline !important;
+  }
+  
+  .post-content a:link,
+  .post-content a:visited {
+    color: var(--customContentLinkColor) !important;
   }
 
   /* Emphasis and strong */

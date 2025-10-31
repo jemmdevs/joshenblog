@@ -22,6 +22,7 @@ const blog = defineCollection({
     // Personalización de colores de texto (solo en página de detalle)
     bannerTextColor: z.string().optional(),    // Color del título del banner (predeterminado: blanco)
     contentTextColor: z.string().optional(),   // Color del texto del contenido (predeterminado: negro)
+    contentHeadingColor: z.string().optional(), // Color de los títulos (h2, h3, etc.) en el contenido
     // Personalización de hover en navbar (solo en página de detalle)
     logoHoverColor: z.string().optional(),     // Color de hover de "SENRI" y "WORKS" en navbar
     // Personalización de la tarjeta en la lista (aparece en la página principal)
