@@ -1,6 +1,6 @@
 ---
-import BaseLayout from './BaseLayout.astro';
-// Optional banner image handled inline
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
 interface Props {
   title: string;
@@ -10,10 +10,29 @@ interface Props {
   authorAvatar?: string;
   image?: string;
   bannerColor?: string;
+  // Personalización solo para la página de detalle del post
+  footerImage?: string;      // Imagen del footer (si no se especifica, usa /footerIMG.png)
+  navHoverColor?: string;    // Color de hover de navbar (si no se especifica, usa #C62F41)
+  navColor?: string;         // Color de botones y elementos de navbar (si no se especifica, usa #C03540)
   tags?: string[];
 }
 
-const { title, description, date, author, authorAvatar, image, bannerColor, tags = [] } = Astro.props;
+const { 
+  title, 
+  description, 
+  date, 
+  author, 
+  authorAvatar, 
+  image, 
+  bannerColor,
+  footerImage,
+  navHoverColor,
+  navColor,
+  tags = [] 
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImage = image || '/bannerIMG.png';
 
 const formattedDate = new Intl.DateTimeFormat('en-US', {
   weekday: 'long',
@@ -25,8 +44,71 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
 // No reading time display in simplified detail view
 ---
 
-<BaseLayout title={`${title} | SENRI Dev`} description={description}>
-  <article>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Primary Meta Tags -->
+    <title>{`${title} | SENRI Dev`}</title>
+    <meta name="title" content={`${title} | SENRI Dev`} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={`${title} | SENRI Dev`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={`${title} | SENRI Dev`} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(ogImage, Astro.site)} />
+
+    <!-- Google Fonts: Saira -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="/src/styles/global.css" />
+
+    <!-- Performance optimizations -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+
+    <!-- Custom colors for this post (CSS Variables) -->
+    <style define:vars={{ 
+      customNavColor: navColor || '#C03540',
+      customNavHoverColor: navHoverColor || '#C62F41'
+    }}>
+      /* Aplicar colores personalizados a botones y elementos de navbar */
+      .custom-nav-color {
+        background-color: var(--customNavColor) !important;
+      }
+      .custom-nav-hover:hover {
+        background-color: var(--customNavHoverColor) !important;
+      }
+      .custom-text-color {
+        color: var(--customNavColor) !important;
+      }
+      .custom-text-hover:hover {
+        color: var(--customNavHoverColor) !important;
+      }
+    </style>
+  </head>
+  <body class="bg-background text-gray-900 antialiased">
+    <!-- Header con colores personalizados -->
+    <Header customNavColor={navColor} customNavHoverColor={navHoverColor} />
+    
+    <main class="min-h-screen">
+      <article>
     <!-- Banner (with optional background image) -->
     <section class="px-4 lg:px-8 py-10">
       <div class="container mx-auto">
@@ -65,7 +147,12 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
       </div>
     </section>
   </article>
-</BaseLayout>
+    </main>
+
+    <!-- Footer con imagen personalizada -->
+    <Footer customFooterImage={footerImage} customNavColor={navColor} />
+  </body>
+</html>
 
 <style is:global>
   /* Base content styles */

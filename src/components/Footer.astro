@@ -1,4 +1,16 @@
 ---
+interface Props {
+  customFooterImage?: string;  // Imagen personalizada del footer (predeterminado: /footerIMG.png)
+  customNavColor?: string;     // Color personalizado para botones (predeterminado: #C03540)
+}
+
+const { customFooterImage, customNavColor } = Astro.props;
+
+// Usar imagen y color personalizados o predeterminados
+const footerImage = customFooterImage || '/footerIMG.png';
+const navColor = customNavColor || '#C03540';
+const navHoverColor = customNavColor ? customNavColor.replace('3540', '2F41') : '#b12e38'; // Variación más oscura para hover
+
 const currentYear = new Date().getFullYear();
 ---
 
@@ -34,8 +46,9 @@ const currentYear = new Date().getFullYear();
             <a 
               href="mailto:jemmdev@gmail.com" 
               id="email-morph"
-              class="flex items-center justify-center gap-2 px-4 h-10 rounded-md bg-[#C03540] text-white hover:bg-[#b12e38] transition-colors morph-text inline-flex"
-              style="min-width: 85px;"
+              class="flex items-center justify-center gap-2 px-4 h-10 rounded-md text-white transition-colors morph-text inline-flex footer-email-btn"
+              style={`min-width: 85px; background-color: ${navColor};`}
+              data-hover-color={navHoverColor}
             >
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -58,8 +71,9 @@ const currentYear = new Date().getFullYear();
           target="_blank" 
           rel="noopener noreferrer" 
           id="works-morph"
-          class="inline-flex items-center justify-center px-5 h-10 rounded-md bg-[#C03540] text-white font-semibold hover:bg-[#b12e38] transition-colors self-start morph-text"
-          style="min-width: 140px;"
+          class="inline-flex items-center justify-center px-5 h-10 rounded-md text-white font-semibold transition-colors self-start morph-text footer-works-btn"
+          style={`min-width: 140px; background-color: ${navColor};`}
+          data-hover-color={navHoverColor}
         >
           <span class="morph-char">V</span><span class="morph-char">i</span><span class="morph-char">e</span><span class="morph-char">w</span><span class="morph-char">&nbsp;</span><span class="morph-char">m</span><span class="morph-char">y</span><span class="morph-char">&nbsp;</span><span class="morph-char">W</span><span class="morph-char">o</span><span class="morph-char">r</span><span class="morph-char">k</span>
         </a>
@@ -69,16 +83,18 @@ const currentYear = new Date().getFullYear();
           <a 
             href="https://github.com/jemmdevs" 
             id="github-morph"
-            class="hover:text-[#C03540] transition-colors morph-text inline-block"
+            class="transition-colors morph-text inline-block footer-social-link"
             style="min-width: 60px;"
+            data-hover-color={navColor}
           >
             <span class="morph-char">G</span><span class="morph-char">i</span><span class="morph-char">t</span><span class="morph-char">H</span><span class="morph-char">u</span><span class="morph-char">b</span>
           </a>
           <a 
             href="https://www.linkedin.com/in/jose-enrique-mateo-munoz-102b28374/" 
             id="linkedin-morph"
-            class="hover:text-[#C03540] transition-colors morph-text inline-block"
+            class="transition-colors morph-text inline-block footer-social-link"
             style="min-width: 75px;"
+            data-hover-color={navColor}
           >
             <span class="morph-char">L</span><span class="morph-char">i</span><span class="morph-char">n</span><span class="morph-char">k</span><span class="morph-char">e</span><span class="morph-char">d</span><span class="morph-char">I</span><span class="morph-char">n</span>
           </a>
@@ -89,10 +105,10 @@ const currentYear = new Date().getFullYear();
   </div>
 
   <!-- Bottom thin red line -->
-  <div class="absolute left-0 right-0 bottom-0 h-[4px] bg-[#C03540]"></div>
+  <div class="absolute left-0 right-0 bottom-0 h-[4px]" style={`background-color: ${navColor};`}></div>
 
   <!-- Character image anchored to the bottom red line -->
-  <img src="/footerIMG.png" alt="Footer art" class="pointer-events-none select-none absolute bottom-1 left-1/4 md:left-1/3 lg:left-[45%] h-64 md:h-72 lg:h-80 object-contain z-0" loading="lazy" />
+  <img src={footerImage} alt="Footer art" class="pointer-events-none select-none absolute bottom-1 left-1/4 md:left-1/3 lg:left-[45%] h-64 md:h-72 lg:h-80 object-contain z-0" loading="lazy" />
 
   <!-- Toast notification -->
   <div id="copy-toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-black text-white px-6 py-3 rounded-lg shadow-lg transition-all duration-300 opacity-0 pointer-events-none z-50 font-medium">
@@ -100,6 +116,50 @@ const currentYear = new Date().getFullYear();
   </div>
 
   <script>
+    // Aplicar colores hover personalizados en footer
+    function setupFooterCustomHoverColors() {
+      // Email y Works buttons hover
+      const footerBtns = document.querySelectorAll('.footer-email-btn, .footer-works-btn');
+      footerBtns.forEach(btn => {
+        const hoverColor = btn.getAttribute('data-hover-color');
+        if (hoverColor) {
+          btn.addEventListener('mouseenter', () => {
+            btn.style.backgroundColor = hoverColor;
+          });
+          btn.addEventListener('mouseleave', () => {
+            const originalColor = btn.style.backgroundColor;
+            btn.style.backgroundColor = '';
+            setTimeout(() => { btn.style.backgroundColor = originalColor; }, 0);
+          });
+        }
+      });
+
+      // Social links hover
+      const socialLinks = document.querySelectorAll('.footer-social-link');
+      socialLinks.forEach(link => {
+        const hoverColor = link.getAttribute('data-hover-color');
+        if (hoverColor) {
+          link.addEventListener('mouseenter', () => {
+            link.style.color = hoverColor;
+          });
+          link.addEventListener('mouseleave', () => {
+            link.style.color = '';
+          });
+        }
+      });
+
+      // Copy email ring color
+      const copyBtn = document.getElementById('copy-email');
+      if (copyBtn) {
+        const ringColor = copyBtn.closest('footer')?.querySelector('.footer-email-btn')?.style.backgroundColor || '#C03540';
+        copyBtn.addEventListener('click', () => {
+          copyBtn.style.setProperty('--ring-color', ringColor);
+        });
+      }
+    }
+
+    setupFooterCustomHoverColors();
+
     // Character morphing effect for footer
     const morphTexts = {
       'contact-me-morph': { japanese: 'レンラクサキ', original: 'CONTACT ME' },

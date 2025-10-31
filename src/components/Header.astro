@@ -1,5 +1,15 @@
 ---
 // Header component inspired by Azuki's design
+interface Props {
+  customNavColor?: string;      // Color personalizado para botones y texto (predeterminado: #C03540)
+  customNavHoverColor?: string; // Color personalizado para hover (predeterminado: #C62F41)
+}
+
+const { customNavColor, customNavHoverColor } = Astro.props;
+
+// Usar colores personalizados o predeterminados
+const navColor = customNavColor || '#C03540';
+const navHoverColor = customNavHoverColor || '#C62F41';
 ---
 
 <header class="sticky top-0 z-[60] md:backdrop-blur-md md:bg-white/70 bg-[#F5F5F5] border-b border-white/20 shadow-sm">
@@ -10,7 +20,7 @@
         <span 
           id="logo-link"
           class="text-primary font-brand font-black text-lg md:text-xl leading-6 tracking-wider morph-text inline-block"
-          style="min-width: 70px;"
+          style={`min-width: 70px; color: ${navColor};`}
         >
           <span class="morph-char">S</span><span class="morph-char">E</span><span class="morph-char">N</span><span class="morph-char">R</span><span class="morph-char">I</span>
         </span>
@@ -23,7 +33,7 @@
         rel="noopener noreferrer" 
         class="hidden md:block text-primary font-black text-lg hover:opacity-80 transition-opacity morph-text inline-block"
         id="works-link"
-        style="min-width: 85px;"
+        style={`min-width: 85px; color: ${navColor};`}
       >
         <span class="morph-char">W</span><span class="morph-char">O</span><span class="morph-char">R</span><span class="morph-char">K</span><span class="morph-char">S</span>
       </a>
@@ -32,8 +42,9 @@
       <div class="relative hidden md:block">
         <button 
           id="contact-btn" 
-          class="text-gray-900 font-medium text-lg hover:text-primary transition-colors cursor-pointer morph-text inline-block"
+          class="text-gray-900 font-medium text-lg transition-colors cursor-pointer morph-text inline-block header-contact-btn"
           style="min-width: 100px;"
+          data-hover-color={navHoverColor}
         >
           <span class="morph-char">C</span><span class="morph-char">O</span><span class="morph-char">N</span><span class="morph-char">T</span><span class="morph-char">A</span><span class="morph-char">C</span><span class="morph-char">T</span>
         </button>
@@ -59,7 +70,9 @@
               </button>
               <a 
                 href="mailto:jemmdev@gmail.com" 
-                class="flex-1 px-4 py-2 rounded-md bg-primary text-white text-sm font-medium flex items-center justify-center gap-2 hover:bg-[#b12e38] transition-colors"
+                class="flex-1 px-4 py-2 rounded-md text-white text-sm font-medium flex items-center justify-center gap-2 transition-colors header-email-btn"
+                style={`background-color: ${navColor};`}
+                data-hover-color={navHoverColor}
               >
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -92,15 +105,16 @@
     <div class="container mx-auto px-4 lg:px-8 pt-20">
       <nav class="flex flex-col">
         <!-- Works Link -->
-        <div class="pb-8 border-b" style="border-color: #C62F41;">
+        <div class="pb-8 border-b" style={`border-color: ${navHoverColor};`}>
           <a 
             href="https://josencv.vercel.app" 
             target="_blank" 
             rel="noopener noreferrer" 
-            class="text-primary font-black text-3xl hover:opacity-80 transition-opacity inline-flex items-start gap-1 relative"
+            class="font-black text-3xl hover:opacity-80 transition-opacity inline-flex items-start gap-1 relative"
+            style={`color: ${navColor};`}
           >
             VIEW MY WORK
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C62F41" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="absolute -top-0.5 -right-4">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="absolute -top-0.5 -right-4" style={`stroke: ${navHoverColor};`}>
               <path d="M7 17L17 7"></path>
               <path d="M7 7h10v10"></path>
             </svg>
@@ -108,7 +122,7 @@
         </div>
 
         <!-- Contact Section -->
-        <div class="py-8 border-b" style="border-color: #C62F41;">
+        <div class="py-8 border-b" style={`border-color: ${navHoverColor};`}>
           <div class="space-y-4">
             <div class="text-gray-900 font-medium text-3xl">CONTACT</div>
             <div class="text-gray-700 text-sm mb-3">jemmdev@gmail.com</div>
@@ -126,7 +140,9 @@
               </button>
               <a 
                 href="mailto:jemmdev@gmail.com" 
-                class="flex-1 px-4 py-3 rounded-md bg-primary text-white text-sm font-medium flex items-center justify-center gap-2 hover:bg-[#b12e38] transition-colors"
+                class="flex-1 px-4 py-3 rounded-md text-white text-sm font-medium flex items-center justify-center gap-2 transition-colors header-email-btn-mobile"
+                style={`background-color: ${navColor};`}
+                data-hover-color={navHoverColor}
               >
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -176,6 +192,53 @@
 </header>
 
 <script>
+  // Aplicar colores hover personalizados
+  function setupCustomHoverColors() {
+    // Contact button hover
+    const contactBtn = document.querySelector('.header-contact-btn');
+    if (contactBtn) {
+      const hoverColor = contactBtn.getAttribute('data-hover-color') || '#C62F41';
+      contactBtn.addEventListener('mouseenter', () => {
+        contactBtn.style.color = hoverColor;
+      });
+      contactBtn.addEventListener('mouseleave', () => {
+        contactBtn.style.color = '';
+      });
+    }
+
+    // Email buttons hover (desktop & mobile)
+    const emailBtns = document.querySelectorAll('.header-email-btn, .header-email-btn-mobile');
+    emailBtns.forEach(btn => {
+      const hoverColor = btn.getAttribute('data-hover-color');
+      if (hoverColor) {
+        btn.addEventListener('mouseenter', () => {
+          btn.style.backgroundColor = hoverColor;
+        });
+        btn.addEventListener('mouseleave', () => {
+          const originalColor = btn.style.backgroundColor;
+          btn.style.backgroundColor = '';
+          setTimeout(() => { btn.style.backgroundColor = originalColor; }, 0);
+        });
+      }
+    });
+
+    // Mobile links hover
+    const mobileLinks = document.querySelectorAll('.header-link-mobile');
+    mobileLinks.forEach(link => {
+      const hoverColor = link.getAttribute('data-hover-color');
+      if (hoverColor) {
+        link.addEventListener('mouseenter', () => {
+          link.style.color = hoverColor;
+        });
+        link.addEventListener('mouseleave', () => {
+          link.style.color = '';
+        });
+      }
+    });
+  }
+
+  setupCustomHoverColors();
+
   // Character morphing effect
   const worksLink = document.getElementById('works-link');
   const logoLink = document.getElementById('logo-link');
