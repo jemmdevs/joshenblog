@@ -1,5 +1,5 @@
 ---
-title: "My Azuki-Style Inspired Blog"
+title: "My Testing Post"
 description: "Why I based my site's design on Azuki's interface — a closer look at how I applied human-computer interaction principles to craft clarity, flow and impact."
 date: 2025-08-24
 author: "SENRI"
@@ -11,25 +11,25 @@ author: "SENRI"
 # 🎨 Color del banner (fondo del banner en la página de detalle)
 # Usa cualquier color CSS válido: hex (#403E52), rgb(64, 62, 82), nombres (blue), etc.
 # Si lo dejas vacío o lo eliminas, usará el color rojo/rosa predeterminado del tema
-bannerColor: "#403E52"
+bannerColor: "#0378BD"
 
 # 🖼️ Imagen del banner (aparece en el lado derecho del banner de la página de detalle)
 # Pon la ruta desde la carpeta public/ empezando con "/"
 # Ejemplo: si la imagen está en public/bannerIMG2.png, escribe "/bannerIMG2.png"
 # Si lo dejas vacío, usará "/bannerIMG.png" por defecto
-image: "/bannerIMG2.png"
+image: "/testIMG.jpg"
 
 # 👤 Avatar del autor (aparece en la tarjeta del post en la lista principal)
 # Pon la ruta desde la carpeta public/ empezando con "/"
 # Ejemplo: si está en public/profileIMG2.png, escribe "/profileIMG2.png"
 # Si lo dejas vacío, usará "/profileIMG.png" por defecto
-authorAvatar: "/profileIMG2.png"
+authorAvatar: "/testIMG.jpg"
 
 # 🖼️ Imagen del footer (solo en la página de detalle de este post)
 # La imagen que aparece en la esquina inferior del footer
 # Ejemplo: si está en public/footerIMG2.png, escribe "/footerIMG2.png"
 # Si lo dejas vacío, usará "/footerIMG.png" por defecto
-footerImage: "/bannerIMG.png"
+footerImage: "/testIMG.jpg"
 
 # 🎨 Color de la navbar (solo en la página de detalle de este post)
 # Este color se aplica a:
@@ -40,7 +40,7 @@ footerImage: "/bannerIMG.png"
 # - Enlaces sociales (GitHub, LinkedIn) en el footer
 # - Línea inferior del footer
 # Si lo dejas vacío, usará "#C03540" (rojo) por defecto
-navColor: "#5B21B6"
+navColor: "#0378BD"
 
 # 🎨 Color de hover de la navbar (solo en la página de detalle de este post)
 # Este color se aplica al pasar el ratón sobre:
@@ -49,13 +49,50 @@ navColor: "#5B21B6"
 # - Botones "View my Work" (hover)
 # - Bordes de secciones en el menú móvil
 # Si lo dejas vacío, usará "#C62F41" (rojo más claro) por defecto
-navHoverColor: "#7C3AED"
+navHoverColor: "#0378BD"
+
+# 🔗 Color de enlaces en el contenido del post (solo en la página de detalle)
+# Este color se aplica a todos los enlaces que escribas dentro del contenido markdown
+# Por ejemplo, el enlace a "Azuki" en este post usará este color
+# Si lo dejas vacío, usará "#C62F41" (rojo más claro) por defecto
+contentLinkColor: "#0378BD"
+
+# 🔙 Color de botones de navegación "← Back" y "Top ↑" (solo en la página de detalle)
+# Estos botones aparecen al final del contenido del post
+# Si lo dejas vacío, usará "#C03540" (rojo) por defecto
+navigationColor: "#0378BD"
+
+# 🎨 Color de fondo de la página de detalle del post
+# Cambia el color de fondo de toda la página cuando se ve este post
+# Si lo dejas vacío, usará "#F5F5F5" (gris muy claro) por defecto
+pageBackground: "#FAF5FF"
+
+# ✨ Color de hover del título en la LISTA de posts (aparece en la página principal)
+# Este color se aplica cuando pasas el ratón sobre el título de este post en la lista
+# También afecta al cuadradito del número y al fondo del avatar
+# Si lo dejas vacío, usará "#C03540" (rojo) por defecto
+cardHoverColor: "#0378BD"
+
+# 🎯 Color de hover de "SENRI" y "WORKS" en la navbar (solo en la página de detalle)
+# Este es el color al que cambian cuando pasas el ratón sobre ellos
+# Si lo dejas vacío, usará el mismo que navHoverColor
+logoHoverColor: "#0378BD"
+
+# 📝 Color del texto del banner (título y fecha/autor) (solo en la página de detalle)
+# Este color se aplica al título grande y a la metadata (fecha y autor) del banner
+# Si lo dejas vacío, usará blanco (#FFFFFF) por defecto
+bannerTextColor: "#080808"
+
+# 📝 Color del texto del contenido (solo en la página de detalle)
+# Este color se aplica a todo el texto del contenido (párrafos, títulos, listas)
+# Si lo dejas vacío, usará negro (#000000) por defecto
+contentTextColor: "#1F2937"
 
 # 🏷️ Tags del post (no afectan la apariencia visual, solo metadatos)
 tags: ["HCI", "UX", "design inspiration", "Azuki", "web design"]
 ---
 
-I’ve taken the design of this blog as an opportunity to lean into something I genuinely admire: the web presence of [Azuki](https://www.azuki.com). Their site is more than just flashy — it nails how good human-computer interaction design gives you clarity, flow and emotion.
+I’ve taken the design of this blog as an opportunity to lean into something I genuinely admire: the web presence of [Azuki](https://azuki.com). Their site is more than just flashy — it nails how good human-computer interaction design gives you clarity, flow and emotion.
 
 Here’s what I picked up from Azuki’s interface and how I translated that into this blog.
 

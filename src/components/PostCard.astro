@@ -10,25 +10,29 @@ interface Props {
   slug: string;
   image?: string;
   number?: number;
+  cardHoverColor?: string;  // Color personalizado de hover para el título
 }
 
-const { title, description, date, author, authorAvatar, slug, number } = Astro.props;
+const { title, description, date, author, authorAvatar, slug, number, cardHoverColor } = Astro.props;
 
 const formattedDate = new Intl.DateTimeFormat('en-US', {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
 }).format(date);
+
+// Color de hover personalizado o predeterminado
+const hoverColor = cardHoverColor || '#C03540';
 ---
 
 <article class="group relative">
-  <a href={`/blog/${slug}`} class="block">
+  <a href={`/blog/${slug}`} class="block" data-hover-color={hoverColor}>
     <div class="flex gap-4 items-start">
       <!-- Small square icon with inset number badge -->
-      <div class="relative w-14 h-14 md:w-20 md:h-20 rounded-lg bg-gray-300 overflow-hidden group-hover:bg-primary/20 transition-colors flex items-center justify-center shrink-0 mt-0 md:mt-[22px]">
+      <div class="relative w-14 h-14 md:w-20 md:h-20 rounded-lg bg-gray-300 overflow-hidden transition-colors flex items-center justify-center shrink-0 mt-0 md:mt-[22px] post-card-avatar">
         <img src={authorAvatar || "/profileIMG.png"} onerror="this.src='/profileIMG.png';this.onerror=null;" alt="Profile" class="absolute inset-0 w-full h-full object-cover rounded-lg" loading="lazy" />
         {number && (
-          <div class="absolute top-0 right-0 w-5 h-5 md:w-6 md:h-6 rounded-md bg-black group-hover:bg-primary text-white text-[10px] md:text-xs font-bold flex items-center justify-center shadow-[0_0_0_2px_#F5F5F5] transition-colors">
+          <div class="absolute top-0 right-0 w-5 h-5 md:w-6 md:h-6 rounded-md bg-black text-white text-[10px] md:text-xs font-bold flex items-center justify-center shadow-[0_0_0_2px_#F5F5F5] transition-colors post-card-number">
             {number}
           </div>
         )}
@@ -44,7 +48,7 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
         </div>
 
         <!-- Title -->
-        <h2 class="mt-1 text-[20px] leading-[24px] md:text-[48px] md:leading-[53px] font-black text-black transition-colors group-hover:text-primary">
+        <h2 class="mt-1 text-[20px] leading-[24px] md:text-[48px] md:leading-[53px] font-black text-black transition-colors post-card-title">
           {title}
         </h2>
       </div>
@@ -53,4 +57,31 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
     </div>
   </a>
 </article>
+
+<style define:vars={{ customHoverColor: hoverColor }}>
+  /* Hover del título */
+  .group:hover .post-card-title {
+    color: var(--customHoverColor);
+  }
+  
+  /* Hover del cuadradito del número */
+  .group:hover .post-card-number {
+    background-color: var(--customHoverColor);
+  }
+  
+  /* Hover del fondo del avatar (efecto sutil) */
+  .group:hover .post-card-avatar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--customHoverColor);
+    opacity: 0.2;
+    border-radius: 0.5rem;
+    pointer-events: none;
+  }
+  
+  .post-card-avatar {
+    position: relative;
+  }
+</style>
 

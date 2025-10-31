@@ -11,9 +11,16 @@ interface Props {
   image?: string;
   bannerColor?: string;
   // Personalización solo para la página de detalle del post
-  footerImage?: string;      // Imagen del footer (si no se especifica, usa /footerIMG.png)
-  navHoverColor?: string;    // Color de hover de navbar (si no se especifica, usa #C62F41)
-  navColor?: string;         // Color de botones y elementos de navbar (si no se especifica, usa #C03540)
+  footerImage?: string;        // Imagen del footer (si no se especifica, usa /footerIMG.png)
+  navHoverColor?: string;      // Color de hover de navbar (si no se especifica, usa #C62F41)
+  navColor?: string;           // Color de botones y elementos de navbar (si no se especifica, usa #C03540)
+  contentLinkColor?: string;   // Color de enlaces en el contenido del post (si no se especifica, usa #C62F41)
+  navigationColor?: string;    // Color de botones "Back" y "Top" (si no se especifica, usa #C03540)
+  pageBackground?: string;     // Color de fondo de la página (si no se especifica, usa #F5F5F5)
+  bannerTextColor?: string;    // Color del título del banner (si no se especifica, usa blanco)
+  contentTextColor?: string;   // Color del texto del contenido (si no se especifica, usa negro)
+  logoHoverColor?: string;     // Color de hover de SENRI y WORKS (si no se especifica, usa navHoverColor)
+  cardHoverColor?: string;     // Color de hover en la lista de posts (usado en página principal)
   tags?: string[];
 }
 
@@ -28,6 +35,13 @@ const {
   footerImage,
   navHoverColor,
   navColor,
+  contentLinkColor,
+  navigationColor,
+  pageBackground,
+  bannerTextColor,
+  contentTextColor,
+  logoHoverColor,
+  cardHoverColor,
   tags = [] 
 } = Astro.props;
 
@@ -86,7 +100,12 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
     <!-- Custom colors for this post (CSS Variables) -->
     <style define:vars={{ 
       customNavColor: navColor || '#C03540',
-      customNavHoverColor: navHoverColor || '#C62F41'
+      customNavHoverColor: navHoverColor || '#C62F41',
+      customContentLinkColor: contentLinkColor || '#C62F41',
+      customNavigationColor: navigationColor || '#C03540',
+      customPageBackground: pageBackground || '#F5F5F5',
+      customBannerTextColor: bannerTextColor || '#FFFFFF',
+      customContentTextColor: contentTextColor || '#000000'
     }}>
       /* Aplicar colores personalizados a botones y elementos de navbar */
       .custom-nav-color {
@@ -101,11 +120,68 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
       .custom-text-hover:hover {
         color: var(--customNavHoverColor) !important;
       }
+      
+      /* Color de fondo personalizado de la página */
+      body {
+        background-color: var(--customPageBackground) !important;
+      }
+      
+      /* Color del texto del banner */
+      .banner-text {
+        color: var(--customBannerTextColor) !important;
+      }
+      
+      /* Color del texto del contenido */
+      .post-content p,
+      .post-content h2,
+      .post-content h3,
+      .post-content h4,
+      .post-content li,
+      .post-content {
+        color: var(--customContentTextColor) !important;
+      }
+      
+      /* Color de enlaces en el contenido del post */
+      .post-content a {
+        color: var(--customContentLinkColor) !important;
+      }
+      
+      /* Color de botones de navegación (Back y Top) */
+      .nav-link {
+        color: var(--customNavigationColor) !important;
+      }
+      .nav-link:hover {
+        color: var(--customContentLinkColor) !important;
+      }
+      
+      /* Color del texto del banner (título y metadata) */
+      .banner-title {
+        color: var(--customBannerTextColor) !important;
+      }
+      .banner-metadata {
+        color: var(--customBannerTextColor) !important;
+      }
+      .banner-divider {
+        background-color: var(--customBannerTextColor) !important;
+        opacity: 0.7;
+      }
+      
+      /* Color del texto del contenido */
+      .post-content p,
+      .post-content h2,
+      .post-content h3,
+      .post-content h4,
+      .post-content h5,
+      .post-content h6,
+      .post-content li,
+      .post-content {
+        color: var(--customContentTextColor) !important;
+      }
     </style>
   </head>
-  <body class="bg-background text-gray-900 antialiased">
+  <body class="text-gray-900 antialiased">
     <!-- Header con colores personalizados -->
-    <Header customNavColor={navColor} customNavHoverColor={navHoverColor} />
+    <Header customNavColor={navColor} customNavHoverColor={navHoverColor} customLogoHoverColor={logoHoverColor} />
     
     <main class="min-h-screen">
       <article>
@@ -116,13 +192,13 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
           <img src={image || "/bannerIMG.png"} alt={title} class="absolute right-6 bottom-0 h-[85%] object-contain pointer-events-none select-none" loading="eager" />
           <div class="relative px-6 lg:px-10 pt-14 lg:pt-20 pb-24">
             <div class="max-w-4xl pr-40">
-              <h1 class="text-[20px] leading-[24px] md:text-[64px] md:leading-[70px] font-black tracking-tight">
+              <h1 class="text-[20px] leading-[24px] md:text-[64px] md:leading-[70px] font-black tracking-tight banner-title">
                 {title}
               </h1>
               <div class="mt-4">
-                <div class="w-148 h-px bg-white/70"></div>
+                <div class="w-148 h-px banner-divider"></div>
               </div>
-              <div class="font-pixel font-normal uppercase text-[12px] md:text-[12px] leading-4 text-white flex items-center gap-3 absolute left-6 lg:left-10 bottom-6">
+              <div class="font-pixel font-normal uppercase text-[12px] md:text-[12px] leading-4 flex items-center gap-3 absolute left-6 lg:left-10 bottom-6 banner-metadata">
                 <time datetime={date.toISOString()}>{formattedDate}</time>
                 <span>—</span>
                 <span>{author}</span>
@@ -141,8 +217,8 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
         </div>
 
         <div class="mt-12 flex justify-between items-center">
-          <a href="/" class="text-primary hover:underline font-medium">← Back</a>
-          <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="text-gray-600 hover:text-primary font-medium">Top ↑</button>
+          <a href="/" class="nav-link hover:underline font-medium">← Back</a>
+          <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="nav-link font-medium cursor-pointer transition-colors">Top ↑</button>
         </div>
       </div>
     </section>
@@ -150,7 +226,7 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
     </main>
 
     <!-- Footer con imagen personalizada -->
-    <Footer customFooterImage={footerImage} customNavColor={navColor} />
+    <Footer customFooterImage={footerImage} customNavColor={navColor} customPageBackground={pageBackground} />
   </body>
 </html>
 

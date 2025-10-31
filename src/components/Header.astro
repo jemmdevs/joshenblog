@@ -1,15 +1,17 @@
 ---
 // Header component inspired by Azuki's design
 interface Props {
-  customNavColor?: string;      // Color personalizado para botones y texto (predeterminado: #C03540)
-  customNavHoverColor?: string; // Color personalizado para hover (predeterminado: #C62F41)
+  customNavColor?: string;        // Color personalizado para botones y texto (predeterminado: #C03540)
+  customNavHoverColor?: string;   // Color personalizado para hover (predeterminado: #C62F41)
+  customLogoHoverColor?: string;  // Color personalizado para hover de SENRI y WORKS (predeterminado: usa navHoverColor)
 }
 
-const { customNavColor, customNavHoverColor } = Astro.props;
+const { customNavColor, customNavHoverColor, customLogoHoverColor } = Astro.props;
 
 // Usar colores personalizados o predeterminados
 const navColor = customNavColor || '#C03540';
 const navHoverColor = customNavHoverColor || '#C62F41';
+const logoHoverColor = customLogoHoverColor || navHoverColor;
 ---
 
 <header class="sticky top-0 z-[60] md:backdrop-blur-md md:bg-white/70 bg-[#F5F5F5] border-b border-white/20 shadow-sm">
@@ -19,8 +21,9 @@ const navHoverColor = customNavHoverColor || '#C62F41';
       <a href="/" class="flex items-center space-x-2 group">
         <span 
           id="logo-link"
-          class="text-primary font-brand font-black text-lg md:text-xl leading-6 tracking-wider morph-text inline-block"
+          class="text-primary font-brand font-black text-lg md:text-xl leading-6 tracking-wider morph-text inline-block transition-colors header-logo-link"
           style={`min-width: 70px; color: ${navColor};`}
+          data-hover-color={logoHoverColor}
         >
           <span class="morph-char">S</span><span class="morph-char">E</span><span class="morph-char">N</span><span class="morph-char">R</span><span class="morph-char">I</span>
         </span>
@@ -31,9 +34,10 @@ const navHoverColor = customNavHoverColor || '#C62F41';
         href="https://josencv.vercel.app" 
         target="_blank" 
         rel="noopener noreferrer" 
-        class="hidden md:block text-primary font-black text-lg hover:opacity-80 transition-opacity morph-text inline-block"
+        class="hidden md:block text-primary font-black text-lg transition-colors morph-text inline-block header-works-link"
         id="works-link"
         style={`min-width: 85px; color: ${navColor};`}
+        data-hover-color={logoHoverColor}
       >
         <span class="morph-char">W</span><span class="morph-char">O</span><span class="morph-char">R</span><span class="morph-char">K</span><span class="morph-char">S</span>
       </a>
@@ -194,8 +198,34 @@ const navHoverColor = customNavHoverColor || '#C62F41';
 <script>
   // Aplicar colores hover personalizados
   function setupCustomHoverColors() {
+    // Logo SENRI hover
+    const logoLink = document.querySelector('.header-logo-link') as HTMLElement | null;
+    if (logoLink) {
+      const hoverColor = logoLink.getAttribute('data-hover-color') || '#C62F41';
+      const originalColor = logoLink.style.color;
+      logoLink.addEventListener('mouseenter', () => {
+        logoLink.style.color = hoverColor;
+      });
+      logoLink.addEventListener('mouseleave', () => {
+        logoLink.style.color = originalColor;
+      });
+    }
+
+    // WORKS hover
+    const worksLink = document.querySelector('.header-works-link') as HTMLElement | null;
+    if (worksLink) {
+      const hoverColor = worksLink.getAttribute('data-hover-color') || '#C62F41';
+      const originalColor = worksLink.style.color;
+      worksLink.addEventListener('mouseenter', () => {
+        worksLink.style.color = hoverColor;
+      });
+      worksLink.addEventListener('mouseleave', () => {
+        worksLink.style.color = originalColor;
+      });
+    }
+
     // Contact button hover
-    const contactBtn = document.querySelector('.header-contact-btn');
+    const contactBtn = document.querySelector('.header-contact-btn') as HTMLElement | null;
     if (contactBtn) {
       const hoverColor = contactBtn.getAttribute('data-hover-color') || '#C62F41';
       contactBtn.addEventListener('mouseenter', () => {
@@ -209,15 +239,16 @@ const navHoverColor = customNavHoverColor || '#C62F41';
     // Email buttons hover (desktop & mobile)
     const emailBtns = document.querySelectorAll('.header-email-btn, .header-email-btn-mobile');
     emailBtns.forEach(btn => {
-      const hoverColor = btn.getAttribute('data-hover-color');
+      const htmlBtn = btn as HTMLElement;
+      const hoverColor = htmlBtn.getAttribute('data-hover-color');
       if (hoverColor) {
-        btn.addEventListener('mouseenter', () => {
-          btn.style.backgroundColor = hoverColor;
+        htmlBtn.addEventListener('mouseenter', () => {
+          htmlBtn.style.backgroundColor = hoverColor;
         });
-        btn.addEventListener('mouseleave', () => {
-          const originalColor = btn.style.backgroundColor;
-          btn.style.backgroundColor = '';
-          setTimeout(() => { btn.style.backgroundColor = originalColor; }, 0);
+        htmlBtn.addEventListener('mouseleave', () => {
+          const originalColor = htmlBtn.style.backgroundColor;
+          htmlBtn.style.backgroundColor = '';
+          setTimeout(() => { htmlBtn.style.backgroundColor = originalColor; }, 0);
         });
       }
     });
@@ -225,13 +256,14 @@ const navHoverColor = customNavHoverColor || '#C62F41';
     // Mobile links hover
     const mobileLinks = document.querySelectorAll('.header-link-mobile');
     mobileLinks.forEach(link => {
-      const hoverColor = link.getAttribute('data-hover-color');
+      const htmlLink = link as HTMLElement;
+      const hoverColor = htmlLink.getAttribute('data-hover-color');
       if (hoverColor) {
-        link.addEventListener('mouseenter', () => {
-          link.style.color = hoverColor;
+        htmlLink.addEventListener('mouseenter', () => {
+          htmlLink.style.color = hoverColor;
         });
-        link.addEventListener('mouseleave', () => {
-          link.style.color = '';
+        htmlLink.addEventListener('mouseleave', () => {
+          htmlLink.style.color = '';
         });
       }
     });
@@ -258,7 +290,7 @@ const navHoverColor = customNavHoverColor || '#C62F41';
     let isAnimating = false;
 
     function morphToJapanese() {
-      if (isAnimating) return;
+      if (isAnimating || !element) return;
       isAnimating = true;
       
       const chars = element.querySelectorAll('.morph-char');

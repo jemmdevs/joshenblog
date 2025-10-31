@@ -39,6 +39,7 @@ const sortedPosts = allPosts.sort((a: CollectionEntry<'blog'>, b: CollectionEntr
             slug={post.slug}
             image={post.data.image}
             number={index + 1}
+            cardHoverColor={post.data.cardHoverColor}
           />
         ))}
       </div>

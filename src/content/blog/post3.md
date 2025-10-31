@@ -51,6 +51,43 @@ navColor: "#5B21B6"
 # Si lo dejas vacío, usará "#C62F41" (rojo más claro) por defecto
 navHoverColor: "#7C3AED"
 
+# 🔗 Color de enlaces en el contenido del post (solo en la página de detalle)
+# Este color se aplica a todos los enlaces que escribas dentro del contenido markdown
+# Por ejemplo, el enlace a "Azuki" en este post usará este color
+# Si lo dejas vacío, usará "#C62F41" (rojo más claro) por defecto
+contentLinkColor: "#A78BFA"
+
+# 🔙 Color de botones de navegación "← Back" y "Top ↑" (solo en la página de detalle)
+# Estos botones aparecen al final del contenido del post
+# Si lo dejas vacío, usará "#C03540" (rojo) por defecto
+navigationColor: "#8B5CF6"
+
+# 🎨 Color de fondo de la página de detalle del post
+# Cambia el color de fondo de toda la página cuando se ve este post
+# Si lo dejas vacío, usará "#F5F5F5" (gris muy claro) por defecto
+pageBackground: "#FAF5FF"
+
+# ✨ Color de hover del título en la LISTA de posts (aparece en la página principal)
+# Este color se aplica cuando pasas el ratón sobre el título de este post en la lista
+# También afecta al cuadradito del número y al fondo del avatar
+# Si lo dejas vacío, usará "#C03540" (rojo) por defecto
+cardHoverColor: "#7C3AED"
+
+# 🎯 Color de hover de "SENRI" y "WORKS" en la navbar (solo en la página de detalle)
+# Este es el color al que cambian cuando pasas el ratón sobre ellos
+# Si lo dejas vacío, usará el mismo que navHoverColor
+logoHoverColor: "#A78BFA"
+
+# 📝 Color del texto del banner (título y fecha/autor) (solo en la página de detalle)
+# Este color se aplica al título grande y a la metadata (fecha y autor) del banner
+# Si lo dejas vacío, usará blanco (#FFFFFF) por defecto
+bannerTextColor: "#FFFFFF"
+
+# 📝 Color del texto del contenido (solo en la página de detalle)
+# Este color se aplica a todo el texto del contenido (párrafos, títulos, listas)
+# Si lo dejas vacío, usará negro (#000000) por defecto
+contentTextColor: "#1F2937"
+
 # 🏷️ Tags del post (no afectan la apariencia visual, solo metadatos)
 tags: ["HCI", "UX", "design inspiration", "Azuki", "web design"]
 ---
