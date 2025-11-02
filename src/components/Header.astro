@@ -130,10 +130,13 @@ const logoHoverColor = customLogoHoverColor || navHoverColor;
                 href="https://github.com/jemmdevs" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                class="text-gray-700 text-lg hover:text-primary transition-colors inline-flex items-center gap-2"
+                id="mobile-github-link"
+                class="text-lg transition-colors inline-flex items-start gap-1.5 header-social-link"
+                style={`color: ${navColor};`}
+                data-hover-color={navHoverColor}
               >
                 GitHub
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="relative -top-0.5">
                   <path d="M7 17L17 7"></path>
                   <path d="M7 7h10v10"></path>
                 </svg>
@@ -142,10 +145,13 @@ const logoHoverColor = customLogoHoverColor || navHoverColor;
                 href="https://www.linkedin.com/in/jose-enrique-mateo-munoz-102b28374/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                class="text-gray-700 text-lg hover:text-primary transition-colors inline-flex items-center gap-2"
+                id="mobile-linkedin-link"
+                class="text-lg transition-colors inline-flex items-start gap-1.5 header-social-link"
+                style={`color: ${navColor};`}
+                data-hover-color={navHoverColor}
               >
                 LinkedIn
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="relative -top-0.5">
                   <path d="M7 17L17 7"></path>
                   <path d="M7 7h10v10"></path>
                 </svg>
@@ -226,6 +232,22 @@ const logoHoverColor = customLogoHoverColor || navHoverColor;
         });
         htmlLink.addEventListener('mouseleave', () => {
           htmlLink.style.color = '';
+        });
+      }
+    });
+
+    // Social links hover (GitHub and LinkedIn in mobile menu)
+    const socialLinks = document.querySelectorAll('.header-social-link');
+    socialLinks.forEach(link => {
+      const htmlLink = link as HTMLElement;
+      const hoverColor = htmlLink.getAttribute('data-hover-color');
+      const originalColor = htmlLink.style.color;
+      if (hoverColor) {
+        htmlLink.addEventListener('mouseenter', () => {
+          htmlLink.style.color = hoverColor;
+        });
+        htmlLink.addEventListener('mouseleave', () => {
+          htmlLink.style.color = originalColor;
         });
       }
     });
