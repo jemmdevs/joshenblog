@@ -53,39 +53,19 @@ const logoHoverColor = customLogoHoverColor || navHoverColor;
           <span class="morph-char">C</span><span class="morph-char">O</span><span class="morph-char">N</span><span class="morph-char">T</span><span class="morph-char">A</span><span class="morph-char">C</span><span class="morph-char">T</span>
         </button>
         
-        <!-- Tooltip with copy email (hidden by default) -->
+        <!-- Tooltip with email link (hidden by default) -->
         <div 
           id="contact-tooltip" 
           class="absolute top-full right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg p-4 opacity-0 pointer-events-none transition-opacity w-72 z-50"
         >
-          <div class="space-y-3">
-            <div class="text-sm text-gray-700 font-medium">jemmdev@gmail.com</div>
-            <div class="flex gap-2">
-              <button 
-                id="copy-email-header" 
-                class="flex-1 px-4 py-2 rounded-md bg-gray-800 text-white text-sm font-medium flex items-center justify-center gap-2 hover:bg-gray-900 transition-colors" 
-                aria-label="Copy email"
-              >
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                </svg>
-                Copy
-              </button>
-              <a 
-                href="mailto:jemmdev@gmail.com" 
-                class="flex-1 px-4 py-2 rounded-md text-white text-sm font-medium flex items-center justify-center gap-2 transition-colors header-email-btn"
-                style={`background-color: ${navColor};`}
-                data-hover-color={navHoverColor}
-              >
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-                Email
-              </a>
-            </div>
-          </div>
+          <a 
+            href="mailto:jemmdev@gmail.com" 
+            class="block text-center px-4 py-2 transition-colors header-email-link morph-text underline decoration-2 text-sm font-medium"
+            style={`color: ${navColor}; text-underline-offset: 3px;`}
+            data-hover-color={navHoverColor}
+          >
+            <span class="morph-char">j</span><span class="morph-char">e</span><span class="morph-char">m</span><span class="morph-char">m</span><span class="morph-char">d</span><span class="morph-char">e</span><span class="morph-char">v</span><span class="morph-char">@</span><span class="morph-char">g</span><span class="morph-char">m</span><span class="morph-char">a</span><span class="morph-char">i</span><span class="morph-char">l</span><span class="morph-char">.</span><span class="morph-char">c</span><span class="morph-char">o</span><span class="morph-char">m</span>
+          </a>
         </div>
       </div>
 
@@ -129,32 +109,15 @@ const logoHoverColor = customLogoHoverColor || navHoverColor;
         <div class="py-8 border-b" style={`border-color: ${navHoverColor};`}>
           <div class="space-y-4">
             <div class="text-gray-900 font-medium text-3xl">CONTACT</div>
-            <div class="text-gray-700 text-sm mb-3">jemmdev@gmail.com</div>
-            <div class="flex gap-2">
-              <button 
-                id="copy-email-mobile" 
-                class="flex-1 px-4 py-3 rounded-md bg-gray-800 text-white text-sm font-medium flex items-center justify-center gap-2 hover:bg-gray-900 transition-colors" 
-                aria-label="Copy email"
-              >
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                </svg>
-                Copy
-              </button>
-              <a 
-                href="mailto:jemmdev@gmail.com" 
-                class="flex-1 px-4 py-3 rounded-md text-white text-sm font-medium flex items-center justify-center gap-2 transition-colors header-email-btn-mobile"
-                style={`background-color: ${navColor};`}
-                data-hover-color={navHoverColor}
-              >
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-                Email
-              </a>
-            </div>
+            <a 
+              href="mailto:jemmdev@gmail.com" 
+              id="mobile-email-link"
+              class="inline-block py-3 text-lg font-medium transition-colors header-email-link-mobile morph-text underline decoration-2"
+              style={`color: ${navColor}; text-underline-offset: 4px;`}
+              data-hover-color={navHoverColor}
+            >
+              <span class="morph-char">j</span><span class="morph-char">e</span><span class="morph-char">m</span><span class="morph-char">m</span><span class="morph-char">d</span><span class="morph-char">e</span><span class="morph-char">v</span><span class="morph-char">@</span><span class="morph-char">g</span><span class="morph-char">m</span><span class="morph-char">a</span><span class="morph-char">i</span><span class="morph-char">l</span><span class="morph-char">.</span><span class="morph-char">c</span><span class="morph-char">o</span><span class="morph-char">m</span>
+            </a>
           </div>
         </div>
 
@@ -236,19 +199,18 @@ const logoHoverColor = customLogoHoverColor || navHoverColor;
       });
     }
 
-    // Email buttons hover (desktop & mobile)
-    const emailBtns = document.querySelectorAll('.header-email-btn, .header-email-btn-mobile');
-    emailBtns.forEach(btn => {
-      const htmlBtn = btn as HTMLElement;
-      const hoverColor = htmlBtn.getAttribute('data-hover-color');
+    // Email links hover (desktop & mobile)
+    const emailLinks = document.querySelectorAll('.header-email-link, .header-email-link-mobile');
+    emailLinks.forEach(link => {
+      const htmlLink = link as HTMLElement;
+      const hoverColor = htmlLink.getAttribute('data-hover-color');
+      const originalColor = htmlLink.style.color;
       if (hoverColor) {
-        htmlBtn.addEventListener('mouseenter', () => {
-          htmlBtn.style.backgroundColor = hoverColor;
+        htmlLink.addEventListener('mouseenter', () => {
+          htmlLink.style.color = hoverColor;
         });
-        htmlBtn.addEventListener('mouseleave', () => {
-          const originalColor = htmlBtn.style.backgroundColor;
-          htmlBtn.style.backgroundColor = '';
-          setTimeout(() => { htmlBtn.style.backgroundColor = originalColor; }, 0);
+        htmlLink.addEventListener('mouseleave', () => {
+          htmlLink.style.color = originalColor;
         });
       }
     });
@@ -275,14 +237,18 @@ const logoHoverColor = customLogoHoverColor || navHoverColor;
   const worksLink = document.getElementById('works-link');
   const logoLink = document.getElementById('logo-link');
   const contactMorphBtn = document.getElementById('contact-btn');
+  const mobileEmailLink = document.getElementById('mobile-email-link');
+  const desktopEmailLink = document.querySelector('.header-email-link');
   
   const morphTexts = {
     'works-link': { japanese: 'サクヒンシュウ', original: 'WORKS' }, // Sakuhin-shū en hiragana
     'logo-link': { japanese: 'センリ', original: 'SENRI' }, // Senri en katakana
-    'contact-btn': { japanese: 'レンラク', original: 'CONTACT' } // Renraku en katakana
+    'contact-btn': { japanese: 'レンラク', original: 'CONTACT' }, // Renraku en katakana
+    'mobile-email-link': { japanese: 'メールヲオクル', original: 'jemmdev@gmail.com' }, // "Enviar correo" en katakana
+    'header-email-link': { japanese: 'メールヲオクル', original: 'jemmdev@gmail.com' } // "Enviar correo" en katakana (desktop)
   };
   
-  function setupMorphing(element: HTMLElement | null, id: string) {
+  function setupMorphing(element: HTMLElement | null, id: string, isMobile: boolean = false) {
     if (!element) return;
     
     const { japanese, original } = morphTexts[id as keyof typeof morphTexts];
@@ -319,15 +285,32 @@ const logoHoverColor = customLogoHoverColor || navHoverColor;
       }, 60); // 60ms per character for smooth transition
     }
 
+    // Desktop: hover
     element.addEventListener('mouseenter', () => {
       if (morphTimeout) clearTimeout(morphTimeout);
       morphToJapanese();
     });
+    
+    // Mobile: click (for mobile-specific elements)
+    if (isMobile) {
+      element.addEventListener('click', (e) => {
+        if (window.innerWidth < 768) {
+          e.preventDefault();
+          morphToJapanese();
+          // Redirect after animation
+          setTimeout(() => {
+            window.location.href = element.getAttribute('href') || '#';
+          }, 500);
+        }
+      });
+    }
   }
 
   setupMorphing(worksLink, 'works-link');
   setupMorphing(logoLink, 'logo-link');
   setupMorphing(contactMorphBtn, 'contact-btn');
+  setupMorphing(mobileEmailLink, 'mobile-email-link', true);
+  if (desktopEmailLink) setupMorphing(desktopEmailLink as HTMLElement, 'header-email-link');
 
   // Mobile Menu
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -364,32 +347,6 @@ const logoHoverColor = customLogoHoverColor || navHoverColor;
     }
   });
 
-  // Copy email from mobile menu
-  const copyEmailMobile = document.getElementById('copy-email-mobile');
-  
-  copyEmailMobile?.addEventListener('click', async () => {
-    try {
-      await navigator.clipboard.writeText('jemmdev@gmail.com');
-      
-      // Show toast
-      const toast = document.getElementById('copy-toast');
-      if (toast) {
-        toast.classList.remove('opacity-0', 'pointer-events-none');
-        toast.classList.add('opacity-100');
-        
-        setTimeout(() => {
-          toast.classList.remove('opacity-100');
-          toast.classList.add('opacity-0', 'pointer-events-none');
-        }, 2000);
-      }
-      
-      // Visual feedback
-      copyEmailMobile.classList.add('ring-2', 'ring-offset-1', 'ring-gray-800');
-      setTimeout(() => copyEmailMobile.classList.remove('ring-2', 'ring-offset-1', 'ring-gray-800'), 800);
-    } catch (e) {
-      console.warn('Clipboard not available');
-    }
-  });
 
   // Desktop Contact Tooltip
   const contactBtn = document.getElementById('contact-btn');
@@ -471,30 +428,4 @@ const logoHoverColor = customLogoHoverColor || navHoverColor;
     }
   });
   
-  // Copy email functionality
-  const copyEmailBtn = document.getElementById('copy-email-header');
-  
-  copyEmailBtn?.addEventListener('click', async () => {
-    try {
-      await navigator.clipboard.writeText('jemmdev@gmail.com');
-      
-      // Show toast
-      const toast = document.getElementById('copy-toast');
-      if (toast) {
-        toast.classList.remove('opacity-0', 'pointer-events-none');
-        toast.classList.add('opacity-100');
-        
-        setTimeout(() => {
-          toast.classList.remove('opacity-100');
-          toast.classList.add('opacity-0', 'pointer-events-none');
-        }, 2000);
-      }
-      
-      // Visual feedback on button
-      copyEmailBtn.classList.add('ring-2', 'ring-offset-1', 'ring-primary');
-      setTimeout(() => copyEmailBtn.classList.remove('ring-2', 'ring-offset-1', 'ring-primary'), 800);
-    } catch (e) {
-      console.warn('Clipboard not available');
-    }
-  });
 </script>

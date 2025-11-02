@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/PostCard.astro';
-import SearchBar from '../components/SearchBar.astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 
@@ -24,9 +23,6 @@ const sortedPosts = allPosts.sort((a: CollectionEntry<'blog'>, b: CollectionEntr
   <!-- Posts Grid -->
   <section class="container mx-auto px-4 lg:px-8 py-16">
     <div class="max-w-3xl mx-auto">
-      <!-- Search Bar -->
-      <SearchBar posts={sortedPosts} />
-      
       <!-- Posts Grid -->
       <div class="grid grid-cols-1 gap-12">
         {sortedPosts.map((post: CollectionEntry<'blog'>, index: number) => (

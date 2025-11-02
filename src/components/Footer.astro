@@ -29,38 +29,15 @@ const currentYear = new Date().getFullYear();
           <span class="morph-char">C</span><span class="morph-char">O</span><span class="morph-char">N</span><span class="morph-char">T</span><span class="morph-char">A</span><span class="morph-char">C</span><span class="morph-char">T</span><span class="morph-char">&nbsp;</span><span class="morph-char">M</span><span class="morph-char">E</span>
         </div>
         <div class="mt-3">
-          <span class="text-gray-800 block mb-3">jemmdev@gmail.com</span>
-          <div class="flex items-center gap-2">
-            <button 
-              id="copy-email" 
-              class="flex items-center justify-center gap-2 px-4 h-10 rounded-md bg-gray-800 text-white hover:bg-gray-900 transition-colors morph-text inline-flex"
-              aria-label="Copy email"
-              style="min-width: 80px;"
-            >
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-              </svg>
-              <span class="text-sm font-medium">
-                <span class="morph-char">C</span><span class="morph-char">o</span><span class="morph-char">p</span><span class="morph-char">y</span>
-              </span>
-            </button>
-            <a 
-              href="mailto:jemmdev@gmail.com" 
-              id="email-morph"
-              class="flex items-center justify-center gap-2 px-4 h-10 rounded-md text-white transition-colors morph-text inline-flex footer-email-btn"
-              style={`min-width: 85px; background-color: ${navColor};`}
-              data-hover-color={navHoverColor}
-            >
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-              <span class="text-sm font-medium">
-                <span class="morph-char">E</span><span class="morph-char">m</span><span class="morph-char">a</span><span class="morph-char">i</span><span class="morph-char">l</span>
-              </span>
-            </a>
-          </div>
+          <a 
+            href="mailto:jemmdev@gmail.com" 
+            id="email-morph"
+            class="inline-block py-2 font-medium transition-colors morph-text underline decoration-2 footer-email-link"
+            style={`color: ${navColor}; text-underline-offset: 4px;`}
+            data-hover-color={navHoverColor}
+          >
+            <span class="morph-char">j</span><span class="morph-char">e</span><span class="morph-char">m</span><span class="morph-char">m</span><span class="morph-char">d</span><span class="morph-char">e</span><span class="morph-char">v</span><span class="morph-char">@</span><span class="morph-char">g</span><span class="morph-char">m</span><span class="morph-char">a</span><span class="morph-char">i</span><span class="morph-char">l</span><span class="morph-char">.</span><span class="morph-char">c</span><span class="morph-char">o</span><span class="morph-char">m</span>
+          </a>
         </div>
         <div class="mt-8 text-sm text-gray-600 hidden lg:block">© 2025 SENRI</div>
       </div>
@@ -112,17 +89,12 @@ const currentYear = new Date().getFullYear();
   <!-- Character image anchored to the bottom red line -->
   <img src={footerImage} alt="Footer art" class="pointer-events-none select-none [-webkit-user-select:none] [-webkit-user-drag:none] absolute bottom-1 left-1/4 md:left-1/3 lg:left-[45%] h-64 md:h-72 lg:h-80 object-contain z-0" loading="lazy" style="-webkit-user-select: none; -webkit-user-drag: none;" />
 
-  <!-- Toast notification -->
-  <div id="copy-toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-black text-white px-6 py-3 rounded-lg shadow-lg transition-all duration-300 opacity-0 pointer-events-none z-50 font-medium">
-    Copied! ✓
-  </div>
-
   <script>
     // Aplicar colores hover personalizados en footer
     function setupFooterCustomHoverColors() {
-      // Email y Works buttons hover
-      const footerBtns = document.querySelectorAll('.footer-email-btn, .footer-works-btn');
-      footerBtns.forEach(btn => {
+      // Works button hover
+      const worksBtns = document.querySelectorAll('.footer-works-btn');
+      worksBtns.forEach(btn => {
         const htmlBtn = btn as HTMLElement;
         const hoverColor = htmlBtn.getAttribute('data-hover-color');
         if (hoverColor) {
@@ -133,6 +105,22 @@ const currentYear = new Date().getFullYear();
             const originalColor = htmlBtn.style.backgroundColor;
             htmlBtn.style.backgroundColor = '';
             setTimeout(() => { htmlBtn.style.backgroundColor = originalColor; }, 0);
+          });
+        }
+      });
+
+      // Email link hover
+      const emailLinks = document.querySelectorAll('.footer-email-link');
+      emailLinks.forEach(link => {
+        const htmlLink = link as HTMLElement;
+        const hoverColor = htmlLink.getAttribute('data-hover-color');
+        const originalColor = htmlLink.style.color;
+        if (hoverColor) {
+          htmlLink.addEventListener('mouseenter', () => {
+            htmlLink.style.color = hoverColor;
+          });
+          htmlLink.addEventListener('mouseleave', () => {
+            htmlLink.style.color = originalColor;
           });
         }
       });
@@ -151,16 +139,6 @@ const currentYear = new Date().getFullYear();
           });
         }
       });
-
-      // Copy email ring color
-      const copyBtn = document.getElementById('copy-email') as HTMLElement | null;
-      if (copyBtn) {
-        const emailBtn = copyBtn.closest('footer')?.querySelector('.footer-email-btn') as HTMLElement | null;
-        const ringColor = emailBtn?.style.backgroundColor || '#C03540';
-        copyBtn.addEventListener('click', () => {
-          copyBtn.style.setProperty('--ring-color', ringColor);
-        });
-      }
     }
 
     setupFooterCustomHoverColors();
@@ -168,14 +146,13 @@ const currentYear = new Date().getFullYear();
     // Character morphing effect for footer
     const morphTexts = {
       'contact-me-morph': { japanese: 'レンラクサキ', original: 'CONTACT ME' },
-      'copy-email': { japanese: 'コピー', original: 'Copy' },
-      'email-morph': { japanese: 'メール', original: 'Email' },
+      'email-morph': { japanese: 'メールヲオクル', original: 'jemmdev@gmail.com' },
       'works-morph': { japanese: 'サクヒンヲミル', original: 'View my Work' },
       'github-morph': { japanese: 'ギットハブ', original: 'GitHub' },
       'linkedin-morph': { japanese: 'リンクトイン', original: 'LinkedIn' }
     };
     
-    function setupFooterMorphing(id: string) {
+    function setupFooterMorphing(id: string, isMobile: boolean = false) {
       const element = document.getElementById(id);
       if (!element) return;
       
@@ -213,44 +190,32 @@ const currentYear = new Date().getFullYear();
         }, 60);
       }
 
+      // Desktop: hover
       element.addEventListener('mouseenter', () => {
         morphToJapanese();
       });
+      
+      // Mobile: click (for mobile-specific elements)
+      if (isMobile) {
+        element.addEventListener('click', (e) => {
+          if (window.innerWidth < 768) {
+            e.preventDefault();
+            morphToJapanese();
+            // Redirect after animation
+            setTimeout(() => {
+              window.location.href = element.getAttribute('href') || '#';
+            }, 500);
+          }
+        });
+      }
     }
 
     // Setup morphing for all footer elements
     setupFooterMorphing('contact-me-morph');
-    setupFooterMorphing('copy-email');
-    setupFooterMorphing('email-morph');
+    setupFooterMorphing('email-morph', true); // Mobile click enabled
     setupFooterMorphing('works-morph');
     setupFooterMorphing('github-morph');
     setupFooterMorphing('linkedin-morph');
 
-    // Copy email functionality
-    const copyBtn = document.getElementById('copy-email');
-    const toast = document.getElementById('copy-toast');
-    
-    copyBtn?.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText('jemmdev@gmail.com');
-        copyBtn.classList.add('ring-2', 'ring-offset-2', 'ring-[#C03540]');
-        
-        // Show toast
-        if (toast) {
-          toast.classList.remove('opacity-0', 'pointer-events-none');
-          toast.classList.add('opacity-100');
-          
-          // Hide toast after 2 seconds
-          setTimeout(() => {
-            toast.classList.remove('opacity-100');
-            toast.classList.add('opacity-0', 'pointer-events-none');
-          }, 2000);
-        }
-        
-        setTimeout(() => copyBtn.classList.remove('ring-2', 'ring-offset-2', 'ring-[#C03540]'), 800);
-      } catch (e) {
-        console.warn('Clipboard not available');
-      }
-    });
   </script>
 </footer>
