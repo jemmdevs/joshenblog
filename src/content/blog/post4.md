@@ -93,7 +93,7 @@ contentTextColor: "#1F2937"
 # Si lo dejas vacío, usará negro (#000000) por defecto
 contentHeadingColor: "#0378BD"
 
-# 🏷️ Tags del post (no afectan la apariencia visual, solo metadatos)
+# 🏷️ Tags del post (no afectan la apariencia visual, solo a los metadatos)
 tags: ["HCI", "UX", "design inspiration", "Azuki", "web design"]
 ---
 
