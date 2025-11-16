@@ -4,21 +4,23 @@ interface Props {
   customNavColor?: string;        // Color personalizado para botones y texto (predeterminado: #C03540)
   customNavHoverColor?: string;   // Color personalizado para hover (predeterminado: #C62F41)
   customLogoHoverColor?: string;  // Color personalizado para hover de SENRI y WORKS (predeterminado: usa navHoverColor)
+  pageBackground?: string;        // Color de fondo de la página (usado para navbar en posts)
 }
 
-const { customNavColor, customNavHoverColor, customLogoHoverColor } = Astro.props;
+const { customNavColor, customNavHoverColor, customLogoHoverColor, pageBackground } = Astro.props;
 
 // Usar colores personalizados o predeterminados
 const navColor = customNavColor || '#C03540';
 const navHoverColor = customNavHoverColor || '#C62F41';
 const logoHoverColor = customLogoHoverColor || navHoverColor;
+
 ---
 
-<header class="sticky top-0 z-[60] md:backdrop-blur-md md:bg-white/70 bg-[#F5F5F5] border-b border-white/20 shadow-sm">
+<header class="sticky top-0 z-[60]" style="background-color: transparent;">
   <div class="container mx-auto px-4 lg:px-8 relative z-[60]">
     <div class="flex items-center justify-between h-16">
       <!-- Logo -->
-      <a href="/" class="flex items-center space-x-2 group">
+      <a href="/" class="flex items-center space-x-2 group nav-item-hover">
         <span 
           id="logo-link"
           class="text-primary font-brand font-black text-lg md:text-xl leading-6 tracking-wider morph-text inline-block transition-colors header-logo-link"
@@ -34,7 +36,7 @@ const logoHoverColor = customLogoHoverColor || navHoverColor;
         href="https://josencv.vercel.app" 
         target="_blank" 
         rel="noopener noreferrer" 
-        class="hidden md:block text-primary font-black text-lg transition-colors morph-text inline-block header-works-link"
+        class="hidden md:block text-primary font-black text-lg transition-colors morph-text inline-block header-works-link nav-item-hover"
         id="works-link"
         style={`min-width: 85px; color: ${navColor};`}
         data-hover-color={logoHoverColor}
@@ -43,7 +45,7 @@ const logoHoverColor = customLogoHoverColor || navHoverColor;
       </a>
 
       <!-- Right: Contact (desktop only) -->
-      <div class="relative hidden md:block">
+      <div class="relative hidden md:block nav-item-hover">
         <button 
           id="contact-btn" 
           class="text-gray-900 font-medium text-lg transition-colors cursor-pointer morph-text inline-block header-contact-btn"
@@ -451,3 +453,32 @@ const logoHoverColor = customLogoHoverColor || navHoverColor;
   });
   
 </script>
+
+<style>
+  /* Efecto glassmorphismo en hover para elementos de navbar */
+  .nav-item-hover {
+    position: relative;
+    padding: 0.35rem 0.75rem;
+    border-radius: 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .nav-item-hover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+
+  .nav-item-hover:hover::before {
+    opacity: 1;
+  }
+</style>

@@ -65,7 +65,7 @@ navigationColor: "#0378BD"
 # 🎨 Color de fondo de la página de detalle del post
 # Cambia el color de fondo de toda la página cuando se ve este post
 # Si lo dejas vacío, usará "#F5F5F5" (gris muy claro) por defecto
-pageBackground: "#FAF5FF"
+pageBackground: "#000000"
 
 # ✨ Color de hover del título en la LISTA de posts (aparece en la página principal)
 # Este color se aplica cuando pasas el ratón sobre el título de este post en la lista
