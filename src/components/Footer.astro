@@ -22,21 +22,19 @@ const currentYear = new Date().getFullYear();
       <!-- Left: Contact me -->
       <div class="col-span-12 lg:col-span-6">
         <div 
-          id="contact-me-morph"
-          class="text-sm font-semibold uppercase tracking-wide text-gray-700 morph-text inline-block"
+          class="text-sm font-semibold uppercase tracking-wide text-gray-700 inline-block"
           style="min-width: 100px;"
         >
-          <span class="morph-char">C</span><span class="morph-char">O</span><span class="morph-char">N</span><span class="morph-char">T</span><span class="morph-char">A</span><span class="morph-char">C</span><span class="morph-char">T</span><span class="morph-char">&nbsp;</span><span class="morph-char">M</span><span class="morph-char">E</span>
+          CONTACT ME
         </div>
         <div class="mt-3">
           <a 
             href="mailto:jemmdev@gmail.com" 
-            id="email-morph"
-            class="inline-block py-2 font-medium transition-colors morph-text underline decoration-2 footer-email-link"
+            class="inline-block py-2 font-medium transition-colors underline decoration-2 footer-email-link"
             style={`color: ${navColor}; text-underline-offset: 4px;`}
             data-hover-color={navHoverColor}
           >
-            <span class="morph-char">j</span><span class="morph-char">e</span><span class="morph-char">m</span><span class="morph-char">m</span><span class="morph-char">d</span><span class="morph-char">e</span><span class="morph-char">v</span><span class="morph-char">@</span><span class="morph-char">g</span><span class="morph-char">m</span><span class="morph-char">a</span><span class="morph-char">i</span><span class="morph-char">l</span><span class="morph-char">.</span><span class="morph-char">c</span><span class="morph-char">o</span><span class="morph-char">m</span>
+            jemmdev@gmail.com
           </a>
         </div>
         <div class="mt-8 text-sm text-gray-600 hidden lg:block">© 2025 SENRI</div>
@@ -49,36 +47,36 @@ const currentYear = new Date().getFullYear();
           href="https://josencv.vercel.app" 
           target="_blank" 
           rel="noopener noreferrer" 
-          id="works-morph"
-          class="inline-flex items-center justify-center px-5 h-10 rounded-md text-white font-semibold transition-colors self-start morph-text footer-works-btn"
+          class="inline-flex items-center justify-center px-5 h-10 rounded-md text-white font-semibold transition-colors self-start footer-works-btn"
           style={`min-width: 140px; background-color: ${navColor};`}
           data-hover-color={navHoverColor}
         >
-          <span class="morph-char">V</span><span class="morph-char">i</span><span class="morph-char">e</span><span class="morph-char">w</span><span class="morph-char">&nbsp;</span><span class="morph-char">m</span><span class="morph-char">y</span><span class="morph-char">&nbsp;</span><span class="morph-char">W</span><span class="morph-char">o</span><span class="morph-char">r</span><span class="morph-char">k</span>
+          View my Work
         </a>
         <div class="hidden lg:block w-px h-10 bg-gray-300"></div>
         <!-- Social links stacked (text) -->
         <nav class="flex flex-col text-gray-600 gap-2 self-start">
           <a 
             href="https://github.com/jemmdevs" 
-            id="github-morph"
-            class="transition-colors morph-text inline-block footer-social-link"
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="transition-colors inline-block footer-social-link"
             style="min-width: 60px;"
             data-hover-color={navColor}
           >
-            <span class="morph-char">G</span><span class="morph-char">i</span><span class="morph-char">t</span><span class="morph-char">H</span><span class="morph-char">u</span><span class="morph-char">b</span>
+            GitHub
           </a>
           <a 
             href="https://www.linkedin.com/in/jose-enrique-mateo-munoz-102b28374/" 
-            id="linkedin-morph"
-            class="transition-colors morph-text inline-block footer-social-link"
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="transition-colors inline-block footer-social-link"
             style="min-width: 75px;"
             data-hover-color={navColor}
           >
-            <span class="morph-char">L</span><span class="morph-char">i</span><span class="morph-char">n</span><span class="morph-char">k</span><span class="morph-char">e</span><span class="morph-char">d</span><span class="morph-char">I</span><span class="morph-char">n</span>
+            LinkedIn
           </a>
         </nav>
-        </div>
       </div>
     </div>
   </div>
@@ -97,14 +95,13 @@ const currentYear = new Date().getFullYear();
       worksBtns.forEach(btn => {
         const htmlBtn = btn as HTMLElement;
         const hoverColor = htmlBtn.getAttribute('data-hover-color');
+        const originalColor = htmlBtn.style.backgroundColor;
         if (hoverColor) {
           htmlBtn.addEventListener('mouseenter', () => {
             htmlBtn.style.backgroundColor = hoverColor;
           });
           htmlBtn.addEventListener('mouseleave', () => {
-            const originalColor = htmlBtn.style.backgroundColor;
-            htmlBtn.style.backgroundColor = '';
-            setTimeout(() => { htmlBtn.style.backgroundColor = originalColor; }, 0);
+            htmlBtn.style.backgroundColor = originalColor;
           });
         }
       });
@@ -130,92 +127,18 @@ const currentYear = new Date().getFullYear();
       socialLinks.forEach(link => {
         const htmlLink = link as HTMLElement;
         const hoverColor = htmlLink.getAttribute('data-hover-color');
+        const originalColor = htmlLink.style.color;
         if (hoverColor) {
           htmlLink.addEventListener('mouseenter', () => {
             htmlLink.style.color = hoverColor;
           });
           htmlLink.addEventListener('mouseleave', () => {
-            htmlLink.style.color = '';
+            htmlLink.style.color = originalColor;
           });
         }
       });
     }
 
     setupFooterCustomHoverColors();
-
-    // Character morphing effect for footer
-    const morphTexts = {
-      'contact-me-morph': { japanese: 'レンラクサキ', original: 'CONTACT ME' },
-      'email-morph': { japanese: 'メールヲオクル', original: 'jemmdev@gmail.com' },
-      'works-morph': { japanese: 'サクヒンヲミル', original: 'View my Work' },
-      'github-morph': { japanese: 'ギットハブ', original: 'GitHub' },
-      'linkedin-morph': { japanese: 'リンクトイン', original: 'LinkedIn' }
-    };
-    
-    function setupFooterMorphing(id: string, isMobile: boolean = false) {
-      const element = document.getElementById(id);
-      if (!element) return;
-      
-      const { japanese, original } = morphTexts[id as keyof typeof morphTexts];
-      let isAnimating = false;
-
-      function morphToJapanese() {
-        if (isAnimating || !element) return;
-        isAnimating = true;
-        
-        const chars = element.querySelectorAll('.morph-char');
-        
-        // Instant change to Japanese
-        chars.forEach((char, i) => {
-          if (i < japanese.length) {
-            (char as HTMLElement).innerHTML = japanese[i];
-            (char as HTMLElement).style.display = 'inline-block';
-          } else {
-            (char as HTMLElement).style.display = 'none';
-          }
-        });
-        
-        // Then morph back letter by letter
-        let currentIndex = 0;
-        const morphInterval = setInterval(() => {
-          if (currentIndex < original.length) {
-            const char = original[currentIndex];
-            (chars[currentIndex] as HTMLElement).innerHTML = char === ' ' ? '&nbsp;' : char;
-            (chars[currentIndex] as HTMLElement).style.display = 'inline-block';
-            currentIndex++;
-          } else {
-            clearInterval(morphInterval);
-            isAnimating = false;
-          }
-        }, 60);
-      }
-
-      // Desktop: hover
-      element.addEventListener('mouseenter', () => {
-        morphToJapanese();
-      });
-      
-      // Mobile: click (for mobile-specific elements)
-      if (isMobile) {
-        element.addEventListener('click', (e) => {
-          if (window.innerWidth < 768) {
-            e.preventDefault();
-            morphToJapanese();
-            // Redirect after animation
-            setTimeout(() => {
-              window.location.href = element.getAttribute('href') || '#';
-            }, 500);
-          }
-        });
-      }
-    }
-
-    // Setup morphing for all footer elements
-    setupFooterMorphing('contact-me-morph');
-    setupFooterMorphing('email-morph', true); // Mobile click enabled
-    setupFooterMorphing('works-morph');
-    setupFooterMorphing('github-morph');
-    setupFooterMorphing('linkedin-morph');
-
   </script>
 </footer>
