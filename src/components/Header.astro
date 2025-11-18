@@ -36,9 +36,9 @@ const logoHoverColor = customLogoHoverColor || navHoverColor;
         href="https://josencv.vercel.app" 
         target="_blank" 
         rel="noopener noreferrer" 
-        class="hidden md:block text-primary font-black text-lg transition-colors inline-block header-works-link nav-item-hover"
+        class="hidden md:block text-primary font-bold transition-colors inline-block header-works-link nav-item-hover"
         id="works-link"
-        style={`min-width: 85px; color: ${navColor};`}
+        style={`color: ${navColor}; font-size: 15px;`}
         data-hover-color={logoHoverColor}
       >
         WORKS
@@ -46,29 +46,15 @@ const logoHoverColor = customLogoHoverColor || navHoverColor;
 
       <!-- Right: Contact (desktop only) -->
       <div class="relative hidden md:block nav-item-hover">
-        <button 
+        <a 
+          href="mailto:jemmdev@gmail.com"
           id="contact-btn" 
-          class="text-gray-900 font-medium text-lg transition-colors cursor-pointer inline-block header-contact-btn"
-          style="min-width: 100px;"
+          class="text-gray-900 font-bold transition-colors cursor-pointer inline-block header-contact-btn"
+          style="font-size: 15px;"
           data-hover-color={navHoverColor}
         >
           CONTACT
-        </button>
-        
-        <!-- Tooltip with email link (hidden by default) -->
-        <div 
-          id="contact-tooltip" 
-          class="absolute top-full right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg p-4 opacity-0 pointer-events-none transition-opacity w-72 z-50"
-        >
-          <a 
-            href="mailto:jemmdev@gmail.com" 
-            class="block text-center px-4 py-2 transition-colors header-email-link underline decoration-2 text-sm font-medium"
-            style={`color: ${navColor}; text-underline-offset: 3px;`}
-            data-hover-color={navHoverColor}
-          >
-            jemmdev@gmail.com
-          </a>
-        </div>
+        </a>
       </div>
 
       <!-- Mobile: Hamburger Menu Button -->
@@ -356,6 +342,9 @@ const logoHoverColor = customLogoHoverColor || navHoverColor;
     padding: 0.35rem 0.75rem;
     border-radius: 1.5rem;
     transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .nav-item-hover::before {
