@@ -29,10 +29,10 @@ const hoverColor = cardHoverColor || '#C03540';
   <a href={`/blog/${slug}`} class="block" data-hover-color={hoverColor}>
     <div class="flex gap-4 items-start">
       <!-- Small square icon with inset number badge -->
-      <div class="relative w-14 h-14 md:w-20 md:h-20 rounded-lg bg-gray-300 overflow-hidden transition-colors flex items-center justify-center shrink-0 mt-0 md:mt-[22px] post-card-avatar">
+      <div class="relative w-12 h-12 md:w-16 md:h-16 rounded-lg bg-gray-300 overflow-hidden transition-colors flex items-center justify-center shrink-0 mt-0 md:mt-[22px] post-card-avatar">
         <img src={authorAvatar || "/profileIMG.png"} onerror="this.src='/profileIMG.png';this.onerror=null;" alt="Profile" class="absolute inset-0 w-full h-full object-cover rounded-lg [-webkit-user-select:none] [-webkit-user-drag:none]" loading="lazy" style="-webkit-user-select: none; -webkit-user-drag: none;" />
         {number && (
-          <div class="absolute top-0 right-0 w-5 h-5 md:w-6 md:h-6 rounded-md bg-black text-white text-[10px] md:text-xs font-bold flex items-center justify-center shadow-[0_0_0_2px_#F5F5F5] transition-colors post-card-number">
+          <div class="absolute top-0 right-0 w-4 h-4 md:w-5 md:h-5 rounded-md bg-black text-white text-[9px] md:text-[10px] font-bold flex items-center justify-center shadow-[0_0_0_2px_#F5F5F5] transition-colors post-card-number">
             {number}
           </div>
         )}
@@ -41,14 +41,14 @@ const hoverColor = cardHoverColor || '#C03540';
       <!-- Content -->
       <div class="flex-1">
         <!-- Author & Date line -->
-        <div class="flex items-center gap-2 text-[12px] leading-[16px] md:text-[16px] md:leading-[22px] text-neutral-500 font-pixel font-normal uppercase">
+        <div class="flex items-center gap-2 text-[12px] leading-[16px] md:text-[14px] md:leading-[20px] text-neutral-500 font-pixel font-normal uppercase">
           <span>{author}</span>
           <span>—</span>
           <time datetime={date.toISOString()}>{formattedDate}</time>
         </div>
 
         <!-- Title -->
-        <h2 class="mt-1 text-[20px] leading-[24px] md:text-[48px] md:leading-[53px] font-black text-black transition-colors post-card-title">
+        <h2 class="mt-1 text-[20px] leading-[24px] md:text-[48px] md:leading-[53px] font-black text-black transition-colors post-card-title uppercase">
           {title}
         </h2>
       </div>
