@@ -2,6 +2,9 @@
 dist/
 .output/
 
+README.md
+
+
 # generated types
 .astro/
 
