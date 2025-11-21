@@ -22,9 +22,9 @@ const sortedPosts = allPosts.sort((a: CollectionEntry<'blog'>, b: CollectionEntr
 
   <!-- Posts Grid -->
   <section class="container mx-auto px-6 lg:px-8 py-16">
-    <div class="max-w-4xl mx-auto">
+    <div class="max-w-4xl mx-auto relative" id="posts-container">
       <!-- Posts Grid -->
-      <div class="grid grid-cols-1 gap-12">
+      <div class="grid grid-cols-1 gap-12 relative z-10">
         {sortedPosts.map((post: CollectionEntry<'blog'>, index: number) => (
           <PostCard 
             title={post.data.title}
@@ -39,6 +39,29 @@ const sortedPosts = allPosts.sort((a: CollectionEntry<'blog'>, b: CollectionEntr
           />
         ))}
       </div>
+      
+      <!-- Shared Cursor Follower (Read Peak Wheel) -->
+      <div id="cursor-follower" class="fixed pointer-events-none opacity-0 scale-50 z-50 w-[100px] h-[100px] -ml-[50px] -mt-[50px] transition-all duration-300 ease-out flex items-center justify-center top-0 left-0 will-change-transform">
+          <div class="relative w-full h-full">
+              <!-- Rotating Text -->
+              <div class="absolute inset-0 animate-spin-slow w-full h-full">
+                  <svg viewBox="0 0 100 100" class="w-full h-full overflow-visible">
+                      <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
+                      <text class="text-[12.5px] font-black uppercase tracking-[0.18em]" fill="black" style="text-shadow: 0 0 1px rgba(0,0,0,0.1);">
+                          <textPath href="#circlePath" startOffset="50%" text-anchor="middle">
+                              READ PEAK • READ PEAK • READ PEAK • 
+                          </textPath>
+                      </text>
+                  </svg>
+              </div>
+              <!-- Center Icon (Arrow) -->
+              <div class="absolute inset-0 flex items-center justify-center">
+                   <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" class="text-black transform translate-x-0.5">
+                      <path d="M8 5v14l11-7z" />
+                   </svg>
+              </div>
+          </div>
+      </div>
 
       {sortedPosts.length === 0 && (
         <div class="text-center py-20">
@@ -48,3 +71,81 @@ const sortedPosts = allPosts.sort((a: CollectionEntry<'blog'>, b: CollectionEntr
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .animate-spin-slow {
+    animation: spin 8s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>
+
+<script>
+  const container = document.getElementById('posts-container');
+  const follower = document.getElementById('cursor-follower');
+  
+  if (container && follower) {
+    let isHovering = false;
+    let mouseX = 0;
+    let mouseY = 0;
+    let followerX = 0;
+    let followerY = 0;
+
+    container.addEventListener('mouseenter', (e) => {
+      isHovering = true;
+      follower.classList.remove('opacity-0', 'scale-50');
+      follower.classList.add('opacity-100', 'scale-100');
+      
+      // Snap to position immediately on enter to prevent flying in
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      followerX = mouseX;
+      followerY = mouseY;
+      updatePosition();
+    });
+
+    container.addEventListener('mouseleave', () => {
+      isHovering = false;
+      follower.classList.remove('opacity-100', 'scale-100');
+      follower.classList.add('opacity-0', 'scale-50');
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isHovering) return;
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    function updatePosition() {
+      if (!isHovering && Math.abs(mouseX - followerX) < 0.1 && Math.abs(mouseY - followerY) < 0.1) {
+        return; 
+      }
+
+      // Smooth Lerp
+      // Add offset to not cover the exact cursor point (bottom-right offset)
+      // But the user asked "que no esté justo encima", often means slight offset
+      // Let's do a small offset of 15px
+      const offsetX = 15;
+      const offsetY = 15;
+      
+      const targetX = mouseX + offsetX;
+      const targetY = mouseY + offsetY;
+
+      followerX += (targetX - followerX) * 0.15; // 0.15 easing factor
+      followerY += (targetY - followerY) * 0.15;
+      
+      follower.style.transform = `translate(${followerX}px, ${followerY}px)`;
+      
+      if (isHovering) {
+        requestAnimationFrame(updatePosition);
+      }
+    }
+  }
+</script>
