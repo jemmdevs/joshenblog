@@ -40,28 +40,30 @@ const sortedPosts = allPosts.sort((a: CollectionEntry<'blog'>, b: CollectionEntr
         ))}
       </div>
       
-      <!-- Shared Cursor Follower (Read Peak Wheel) -->
-      <div id="cursor-follower" class="fixed pointer-events-none opacity-0 scale-50 z-50 w-[100px] h-[100px] -ml-[50px] -mt-[50px] transition-all duration-300 ease-out flex items-center justify-center top-0 left-0 will-change-transform">
-          <div class="relative w-full h-full">
-              <!-- Rotating Text -->
-              <div class="absolute inset-0 animate-spin-slow w-full h-full">
-                  <svg viewBox="0 0 100 100" class="w-full h-full overflow-visible">
-                      <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
-                      <text class="text-[12.5px] font-black uppercase tracking-[0.18em]" fill="black" style="text-shadow: 0 0 1px rgba(0,0,0,0.1);">
-                          <textPath href="#circlePath" startOffset="50%" text-anchor="middle">
-                              READ PEAK • READ PEAK • READ PEAK • 
-                          </textPath>
-                      </text>
-                  </svg>
-              </div>
-              <!-- Center Icon (Arrow) -->
-              <div class="absolute inset-0 flex items-center justify-center">
-                   <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" class="text-black transform translate-x-0.5">
-                      <path d="M8 5v14l11-7z" />
+       <!-- Shared Cursor Follower (Read Peak Wheel) -->
+       <div id="cursor-follower" class="fixed pointer-events-none opacity-0 scale-50 z-50 w-[100px] h-[100px] -ml-[50px] -mt-[50px] transition-all duration-300 ease-out flex items-center justify-center top-0 left-0 will-change-transform">
+           <div class="relative w-full h-full">
+               <!-- Rotating Text -->
+               <div class="absolute inset-0 animate-spin-slow w-full h-full">
+                   <svg viewBox="0 0 100 100" class="w-full h-full overflow-visible">
+                       <defs>
+                           <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
+                       </defs>
+                       <text font-size="9" font-weight="900" fill="#000000" letter-spacing="1.5" font-family="Saira, sans-serif" text-transform="uppercase" style="font-weight: 900;">
+                           <textPath href="#circlePath" startOffset="0%">
+                               READ PEAK • READ PEAK • READ PEAK • 
+                           </textPath>
+                       </text>
                    </svg>
-              </div>
-          </div>
-      </div>
+               </div>
+               <!-- Center Icon (Arrow) -->
+               <div class="absolute inset-0 flex items-center justify-center">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="#000000">
+                       <path d="M8 5v14l11-7z" />
+                    </svg>
+               </div>
+           </div>
+       </div>
 
       {sortedPosts.length === 0 && (
         <div class="text-center py-20">
